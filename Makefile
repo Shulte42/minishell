@@ -1,5 +1,5 @@
 NAME	= mini
-SRCS	= main.c
+SRCS	= ${wildcard *.c}
 OBJS	= ${SRCS:.c=.o}
 LIBFT	= libft
 
