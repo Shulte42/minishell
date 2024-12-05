@@ -1,12 +1,14 @@
 #ifndef MINI_H
 #define MINI_H
 
-#include "libft/libft.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/wait.h>
-#include <fcntl.h>
+# include "libft/libft.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **envp);

@@ -4,21 +4,23 @@ OBJS	= ${SRCS:.c=.o}
 LIBFT	= libft
 
 all: ${NAME}
+	make clean -C ${LIBFT}
+	rm -f ${OBJS}
 
 ${NAME}: ${OBJS}
 	make -C ${LIBFT}
-	cc ${OBJS} -L${LIBFT} -lft -o $@
+	cc ${OBJS} -L${LIBFT} -lreadline -lft -o $@
 
 %.o: %.c
 	cc -c $< -o $@
 
 clean:
 	make clean -C ${LIBFT}
-	rm ${OBJS}
+	rm -f ${OBJS}
 
 fclean: clean
 	make fclean -C ${LIBFT}
-	rm ${NAME}
+	rm -f ${NAME}
 
 re: fclean all
 
