@@ -1,1 +1,17 @@
-luiz henrique maciel
+-rw-rw-r-- 1 luiz luiz  1011 Dec 10 15:44 builtins.c
+-rw-rw-r-- 1 luiz luiz  3168 Dec 10 15:48 builtins.o
+-rw-rw-r-- 1 luiz luiz  1960 Dec 10 15:48 check_envp.o
+-rw-rw-r-- 1 luiz luiz  3064 Dec 10 15:48 execute_command.o
+-rw-rw-r-- 1 luiz luiz  1768 Dec 10 15:48 ft_strjoin_free.o
+drwxrwxr-x 2 luiz luiz  4096 Dec 10 15:48 libft
+-rw-rw-r-- 1 luiz luiz  1023 Dec 10 15:48 main.c
+-rw-rw-r-- 1 luiz luiz  1520 Dec 10 15:48 main.o
+-rw-rw-r-- 1 luiz luiz   338 Dec  6 12:42 Makefile
+-rwxrwxr-x 1 luiz luiz 22360 Dec 10 15:48 mini
+-rw-rw-r-- 1 luiz luiz  1880 Dec  6 13:27 mini_echo.o
+-rw-rw-r-- 1 luiz luiz   907 Dec 10 15:45 mini.h
+-rw-rw-r-- 1 luiz luiz  3624 Dec 10 15:48 redirection.o
+-rw-rw-r-- 1 luiz luiz   725 Dec 10 15:48 teste.c
+-rw-rw-r-- 1 luiz luiz  2680 Dec 10 15:48 teste.o
+-rw-rw-r-- 1 luiz luiz   509 Dec  6 12:54 utils.c
+-rw-rw-r-- 1 luiz luiz  2232 Dec 10 15:48 utils.o

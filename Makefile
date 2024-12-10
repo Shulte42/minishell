@@ -4,8 +4,6 @@ OBJS	= ${SRCS:.c=.o}
 LIBFT	= libft
 
 all: ${NAME}
-	make clean -C ${LIBFT}
-	rm -f ${OBJS}
 
 ${NAME}: ${OBJS}
 	make -C ${LIBFT}

@@ -1,38 +1,48 @@
 #include "mini.h"
 
-void	mini_echo(char	**args, int fd)
+void	commands(char **args, char **envp)
 {
-	t_bool	flag_nl;
-	int		i;
+	pid_t	pid;
 
-	flag_nl = B_FALSE;
-	i = 1;
-	if (args[i] && ft_strncmp(args[i], "-n", 2) == 0)
-	{
-		flag_nl = B_TRUE;
-		i++;
-	}
-	while (args[i])
-	{
-		ft_putstr_fd(args[i], fd);
-		if (args[i + 1])
-			ft_putchar_fd(' ', fd);
-		i++;
-	}
-	if (!flag_nl)
-		ft_putchar_fd('\n', fd);
+	pid = fork();
+	if (pid == 0)
+		execute_command(args, envp);
+	else
+		wait(NULL);
 }
 
-/*
-	echo -n luiz henrique maciel
-*/
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
 	char	**args;
+	char	*pwd;
+	t_mini	data;
 
-	input = readline("Mini> ");
-	args = ft_split(input, ' ');
-	mini_echo(args, 1);
+	ft_bzero(&data, sizeof(data));
+	data.pwd = getcwd(NULL, 0);
+	while(1)
+	{
+		pwd = getcwd(NULL, 0);
+		input = readline(ft_strjoin_free(pwd, "$ "));
+		if (!input || !*input)
+		{
+			free(input);
+			continue ;
+		}
+		add_history(input);
+		args = ft_split(input, ' ');
+		free(input);
+		if (ft_strncmp(args[0], "exit", ft_strlen("exit")) == 0)
+			break ;
+		else if (ft_strncmp(args[0], "echo", ft_strlen("echo")) == 0)
+			mini_echo(args, 1);
+		else if(ft_strncmp(args[0], "pwd",ft_strlen("pwd")) == 0)
+			mini_pwd();
+		else if (ft_strncmp(args[0], "cd", ft_strlen("cd")) == 0)
+			mini_cd(args, &data);
+		else
+			commands(args, envp);
+		free_array(args);
+	}
 	return (0);
 }
