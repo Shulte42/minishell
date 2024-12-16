@@ -1,5 +1,16 @@
 #include "mini.h"
 
+void	commands(char **args, char **envp)
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == 0)
+		execute_command(args, envp);
+	else
+		wait(NULL);
+}
+
 char	*get_command_path(char *cmd, char **envp)
 {
 	char	**all_paths;

@@ -1,16 +1,5 @@
 #include "mini.h"
 
-void	commands(char **args, char **envp)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == 0)
-		execute_command(args, envp);
-	else
-		wait(NULL);
-}
-
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
@@ -19,6 +8,7 @@ int main(int ac, char **av, char **envp)
 	t_mini	data;
 
 	ft_bzero(&data, sizeof(data));
+	data.envvar = copy_envvar(envp);
 	data.pwd = getcwd(NULL, 0);
 	while(1)
 	{
@@ -40,6 +30,8 @@ int main(int ac, char **av, char **envp)
 			mini_pwd();
 		else if (ft_strncmp(args[0], "cd", ft_strlen("cd")) == 0)
 			mini_cd(args, &data);
+		else if (ft_strncmp(args[0], "env", ft_strlen("env")) == 0)
+			mini_env(data.envvar);
 		else
 			commands(args, envp);
 		free_array(args);

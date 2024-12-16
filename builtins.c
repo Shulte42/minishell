@@ -63,3 +63,15 @@ void	mini_cd(char **args, t_mini	*data)
 	}
 	data->old_pwd = ft_strjoin_free(pwd_temp,  "");
 }
+
+void	mini_env(t_var *lst)
+{
+	t_var	*current;
+
+	current  = lst;
+	while (current != NULL)
+	{
+		printf("%s\n", current->content);
+		current = current->next;
+	}
+}
