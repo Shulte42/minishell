@@ -1,5 +1,18 @@
 #include "mini.h"
 
+void	print_var_list(t_var *lst)
+{
+	t_var	*current;
+
+	current = lst;
+	while (current)
+	{
+		printf("Name: %s\n", current->name);
+		current = current->next;
+	}
+}
+
+
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
@@ -9,6 +22,8 @@ int main(int ac, char **av, char **envp)
 
 	ft_bzero(&data, sizeof(data));
 	data.envvar = copy_envvar(envp);
+	data.envvar_export = copy_envvar(envp);
+	sort_var(data.envvar_export);
 	data.pwd = getcwd(NULL, 0);
 	while(1)
 	{
@@ -32,6 +47,8 @@ int main(int ac, char **av, char **envp)
 			mini_cd(args, &data);
 		else if (ft_strncmp(args[0], "env", ft_strlen("env")) == 0)
 			mini_env(data.envvar);
+		else if (ft_strncmp(args[0], "export", ft_strlen("export")) == 0)
+			mini_export(data.envvar_export);
 		else
 			commands(args, envp);
 		free_array(args);

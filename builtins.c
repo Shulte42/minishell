@@ -2,14 +2,14 @@
 
 void	mini_echo(char	**args, int fd)
 {
-	t_bool	flag_nl;
+	bool	flag_nl;
 	int		i;
 
-	flag_nl = B_FALSE;
+	flag_nl = false;
 	i = 1;
 	if (args[i] && ft_strncmp(args[i], "-n", sizeof(args[i])) == 0)
 	{
-		flag_nl = B_TRUE;
+		flag_nl = true;
 		i++;
 	}
 	while (args[i])
@@ -29,7 +29,7 @@ void	mini_pwd(void)
 
 	pwd = getcwd(NULL, 0);
 	if (pwd == NULL)
-		perror("getcwd");
+		perror(pwd);
 	else
 	{
 		printf("%s\n", pwd);
@@ -69,9 +69,21 @@ void	mini_env(t_var *lst)
 	t_var	*current;
 
 	current  = lst;
-	while (current != NULL)
+	while (current)
 	{
 		printf("%s\n", current->content);
+		current = current->next;
+	}
+}
+
+void	mini_export(t_var *lst)
+{
+	t_var	*current;
+
+	current = lst;
+	while (current)
+	{
+		printf("declare -x %s=\"%s\"\n", current->name, current->value);
 		current = current->next;
 	}
 }

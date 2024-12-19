@@ -1,15 +1,18 @@
 #include "mini.h"
 
-char	*ft_strndup(const char *s, size_t n)
+char	*ft_strdup_two(const char *s, char c)
 {
 	char	*dest;
 	size_t	i;
 
-	dest = (char *)malloc(n + 1);
+	i = 0;
+	while (s[i] != c)
+		i++;
+	dest = (char *)malloc(i + 1);
 	if (!dest)
 		return (NULL);
 	i = 0;
-	while (s[i] && s[i] < n)
+	while (s[i] && s[i] != c)
 	{
 		dest[i] = s[i];
 		i++;
