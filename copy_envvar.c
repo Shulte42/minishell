@@ -4,6 +4,8 @@ void	add_var_back(t_var **lst, t_var *node)
 {
 	t_var	*current;
 
+	if (node == NULL)
+		return ;
 	if (*lst == NULL)
 		*lst = node;
 	else

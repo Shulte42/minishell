@@ -1,17 +1,25 @@
 #include "mini.h"
 
-void	print_var_list(t_var *lst)
+char	*get_pathname(void)
 {
-	t_var	*current;
+	char	*pwd;
+	char	*result;
+	int		i;
 
-	current = lst;
-	while (current)
-	{
-		printf("Name: %s\n", current->name);
-		current = current->next;
-	}
+	pwd = getcwd(NULL, 0);
+	if (!pwd)
+		return (ft_strdup("$ "));
+	i = 0;
+	while (pwd[i])
+		i++;
+	while (i > 0 && pwd[--i] != '/')
+		(void)pwd;
+	if (i > 0)
+		pwd[--i] = '~';
+	result = ft_strjoin_free(ft_strdup(pwd + i), "$ ");
+	free(pwd);
+	return (result);
 }
-
 
 int main(int ac, char **av, char **envp)
 {
@@ -27,8 +35,8 @@ int main(int ac, char **av, char **envp)
 	data.pwd = getcwd(NULL, 0);
 	while(1)
 	{
-		pwd = getcwd(NULL, 0);
-		input = readline(ft_strjoin_free(pwd, "$ "));
+		pwd = get_pathname();
+		input = readline(color_to_prompt(pwd));
 		if (!input || !*input)
 		{
 			free(input);
@@ -42,7 +50,7 @@ int main(int ac, char **av, char **envp)
 		else if (ft_strncmp(args[0], "echo", ft_strlen("echo")) == 0)
 			mini_echo(args, 1);
 		else if(ft_strncmp(args[0], "pwd",ft_strlen("pwd")) == 0)
-			mini_pwd();
+			mini_pwd(&data);
 		else if (ft_strncmp(args[0], "cd", ft_strlen("cd")) == 0)
 			mini_cd(args, &data);
 		else if (ft_strncmp(args[0], "env", ft_strlen("env")) == 0)

@@ -5,6 +5,8 @@ void	mini_echo(char	**args, int fd)
 	bool	flag_nl;
 	int		i;
 
+	if (!args)
+		return ;
 	flag_nl = false;
 	i = 1;
 	if (args[i] && ft_strncmp(args[i], "-n", sizeof(args[i])) == 0)
@@ -23,15 +25,25 @@ void	mini_echo(char	**args, int fd)
 		ft_putchar_fd('\n', fd);
 }
 
-void	mini_pwd(void)
+void	mini_pwd(t_mini	*data)
 {
 	char	*pwd;
+	t_var	*pwd_envvar;
 
-	pwd = getcwd(NULL, 0);
-	if (pwd == NULL)
-		perror(pwd);
-	else
+	pwd_envvar = find_envvar(data->envvar, "PWD");
+	if (pwd_envvar)
 	{
+		printf("%s\n", pwd_envvar->value);
+		return ;
+	}
+	else if (!pwd_envvar)
+	{
+		pwd = getcwd(NULL, 0);
+		if (pwd == NULL)
+		{
+			perror(pwd);
+			return ;
+		}
 		printf("%s\n", pwd);
 		free(pwd);
 	}
@@ -41,6 +53,8 @@ void	mini_cd(char **args, t_mini	*data)
 {
 	char	*pwd_temp;
 
+	if (!args)
+		return ;
 	pwd_temp = getcwd(NULL, 0);
 	if (!args[1] || (ft_strncmp(args[1], "--", 2) == 0))
 		data->pwd = getenv("HOME");
@@ -48,7 +62,7 @@ void	mini_cd(char **args, t_mini	*data)
 	{
 		if (data->old_pwd == NULL)
 		{
-			printf("No OLDPWD\n");
+			printf("minishell: cd: no OLDPWD\n");
 			return ;
 		}
 		else
@@ -68,6 +82,7 @@ void	mini_env(t_var *lst)
 {
 	t_var	*current;
 
+	/* verificar se tem argumentos, se tiver, exibir messagem de erro */
 	current  = lst;
 	while (current)
 	{
