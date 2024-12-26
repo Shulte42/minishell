@@ -6,15 +6,15 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:08:02 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/16 13:46:58 by shulte           ###   ########.fr       */
+/*   Updated: 2024/12/26 13:55:43 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBS_H
 # define LIBS_H
 
-// # include <readline/readline.h>
-// # include <readline/history.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
