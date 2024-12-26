@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:08:02 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/26 13:55:43 by shulte           ###   ########.fr       */
+/*   Updated: 2024/12/26 15:56:45 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <dirent.h> // to use the opendir function
 # include <termios.h> // to use the termios struct
 // # include "enums.h" // to include enums in the project
-// # include "functions.h" // to include functions in the project
+# include "functions.h" // to include functions in the project
 # include "structs.h" // to include structures in the project
 # include "../libft/inc/libft.h" // to include the libft library
 # include <stdarg.h> // to use the va_list type to ft_error_msg_construct

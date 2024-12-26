@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:47:54 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/16 14:09:32 by shulte           ###   ########.fr       */
+/*   Updated: 2024/12/26 16:04:54 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,21 @@ bool    ft_get_input(t_shell *shell)
 	}
 	if (input)
 	{
+		add_history(input);
 		shell->input = ft_strdup(input);
 		free(input);
 	}
 	return (true);
+}
+static void loop_those_shells(t_shell *minishell)
+{
+	while (1)
+	{
+		if(ft_get_input(minishell))
+		{
+			ft_input_analizes(minishell);
+		}
+	}
 }
 
 int main(int argc, char **argv, char **env)
@@ -47,8 +58,8 @@ int main(int argc, char **argv, char **env)
 	(void)env;
 	(void)argv;
 	shell = ft_start_shell();
-	ft_get_input(shell);
-	printf("input :%s.\n", shell->input);
+	loop_those_shells(shell);
+	free(shell->input);
 	cwd = getcwd(NULL, 0);
 	if (cwd != NULL)
 	{
