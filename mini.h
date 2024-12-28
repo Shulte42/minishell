@@ -20,6 +20,8 @@ typedef struct		s_var
 	char			*content;
 	char			*name;
 	char			*value;
+	bool			env;
+	bool			exp;
 	struct s_var	*next;
 	struct s_var	*prev;
 }					t_var;
@@ -45,10 +47,10 @@ char	*color_to_prompt(char *prompt);
 int		check_envp(char **envp);
 
 char	*ft_strjoin_free(const char *s1, const	char *s2);
-char	*ft_strdup_two(const char *s, char c);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strcat(char *dest, char *src);
+char	*ft_strdup_two(const char *s, char c);
 
 void 	redirect_input(char *file);
 void	redirect_output(char *file);
@@ -68,5 +70,10 @@ void	swap_nodes(t_var *current, t_var *next);
 
 t_var	*find_envvar(t_var *lst, char *name);
 char	*get_pathname(void);
+
+void    set_envvar(t_mini *data, char *name, char *value, int flag);
+void    update_envvar(t_var *envvar, char *name, char *value);
+void    add_new_envvar(t_mini *data, char *name, char *value, int flag);
+char    *create_envvar_content(char *name, char *value);
 
 #endif /* MINI_H */
