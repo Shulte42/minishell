@@ -44,7 +44,7 @@ static void loop_those_shells(t_shell *minishell)
 	{
 		if(ft_get_input(minishell))
 		{
-			printf("input raw:%s\n", minishell->input);
+			printf("input raws:%s\n", minishell->input);
 			ft_input_analizes(minishell);
 			printf("input trim:%s\n", minishell->input);
 		}
@@ -57,9 +57,9 @@ int main(int argc, char **argv, char **env)
 	t_shell *shell;
 	
 	(void)argc;
-	(void)env;
 	(void)argv;
 	shell = ft_start_shell();
+	shell->envvars = ft_envvar_list(env);
 	loop_those_shells(shell);
 	free(shell->input);
 	cwd = getcwd(NULL, 0);

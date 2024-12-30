@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/26 16:04:07 by shulte           ###   ########.fr       */
+/*   Updated: 2024/12/30 16:29:40 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 
 void    ft_input_analizes(t_shell *shell);
 bool ft_quote_checker(char *input);
+t_envvar    *ft_envvar_list(char **env);
+
 
 #endif

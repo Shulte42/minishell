@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/12/29 10:13:58 by shulte           ###   ########.fr       */
+/*   Updated: 2024/12/30 16:55:47 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <unistd.h>
 
 # include <stdbool.h>
+
+#include "../libft/inc/libft.h"
 
 typedef struct s_list
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shulte <shulte@student.42.fr>              +#+  +:+       +#+         #
+#    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2024/12/26 15:53:12 by shulte           ###   ########.fr        #
+#    Updated: 2024/12/30 16:30:13 by bruda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ INC = inc/
 # Source files
 SRCS	=	$(SRC_DIR)input_analizes.c \
 			$(SRC_DIR)parse.c \
+			$(SRC_DIR)envvar.c \
 			$(SRC_DIR)quote_checker.c
 
 OBJS	=	$(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
