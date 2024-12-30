@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+         #
+#    By: shulte <shulte@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 15:49:29 by bruda-si          #+#    #+#              #
-#    Updated: 2024/10/12 21:06:27 by bruda-si         ###   ########.fr        #
+#    Updated: 2024/12/29 10:13:13 by shulte           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ IS_DIR			=	$(SRC_DIR)ft_is/ft_isalpha.c \
 					$(SRC_DIR)ft_is/ft_isdigit.c \
 					$(SRC_DIR)ft_is/ft_isalnum.c \
 					$(SRC_DIR)ft_is/ft_isascii.c \
+					$(SRC_DIR)ft_is/ft_isspace.c \
 					$(SRC_DIR)ft_is/ft_isprint.c
 					
 MEM_DIR			=	$(SRC_DIR)ft_mem/ft_memset.c \
