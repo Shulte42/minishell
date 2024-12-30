@@ -22,9 +22,26 @@ static bool space_trim(char *input, char *temp)
 		return (false);
 	while (input[x] && input[x] != '\'' \
 	&& input[x] != '\"' && !ft_isspace(input[x]))
+		temp[z++] = input[x++];
+	if (input[x] == '\'' || input[x] == '\"')
+	{
+		c = input[x];
+		temp[z++] = input[x++];
+		while (input[x] && input[x] != c)
+			temp[z++] = input[x++];
+		temp[z++] = input[x++];
+	}
+	if (input[x] && ft_isspace(input[x]))
+		temp[z++] = ' ';
+	while (input[x] && ft_isspace(input[x]))
+		x++;
+	temp[z] = '\0';
+	if (input[x] == '\0')
+		return (z = 0, x = 0, true);
+	return (false);
 }
 
-static char *trim_hub(char *input)
+static char *trim_input(char *input)
 {
 	char *temp;
 	
@@ -38,7 +55,7 @@ static char *trim_hub(char *input)
 
 static int input_cleaner(char *input)
 {
-	char trim;
+	char *trim;
 
 	if (!input)
 		return (-1);
