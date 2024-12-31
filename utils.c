@@ -1,17 +1,5 @@
 #include "mini.h"
 
-void	free_array(char **array)
-{
-	int	i;
-
-	if (!array)
-		return ;
-	i = 0;
-	while (array[i])
-		free(array[i++]);
-	free(array);
-}
-
 int	only_space(char *str)
 {
 	int i;
@@ -50,5 +38,6 @@ char	*color_to_prompt(char *prompt)
 	ft_strcpy(colored, CYAN);
 	ft_strcat(colored, prompt);
 	ft_strcat(colored, RESET);
+	free(prompt);
 	return (colored);
 }

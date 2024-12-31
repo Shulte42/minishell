@@ -18,7 +18,7 @@ void	add_var_back(t_var **lst, t_var *node)
 	}
 }
 
-t_var	*copy_envvar(char **envp)
+t_var	*create_lst_envvar(char **envp)
 {
 	char	**current;
 	t_var	*node;
@@ -38,44 +38,3 @@ t_var	*copy_envvar(char **envp)
 	return (head);
 }
 
-void	swap_nodes(t_var *current, t_var *next)
-{
-	char	*content_temp;
-	char	*name_temp;
-	char	*value_temp;
-
-	content_temp = current->content;
-	name_temp = current->name;
-	value_temp = current->value;
-	current->content = next->content;
-	current->name = next->name;
-	current->value = next->value;
-	next->content = content_temp;
-	next->name = name_temp;
-	next->value = value_temp;
-}
-
-void	sort_var(t_var *lst)
-{
-	t_var	*current;
-	int		swap;
-
-	if (!lst)
-		return ;
-	swap = 1;
-	while (swap)
-	{
-		swap = 0;
-		current = lst;
-		while (current && current->next)
-		{
-			if (ft_strcmp(current->name, current->next->name) > 0)
-			{
-				swap_nodes(current, current->next);
-				swap = 1;
-			}
-			else
-				current = current->next;
-		}
-	}
-}

@@ -31,19 +31,21 @@ typedef struct	s_mini
 {
 	char		*pwd;
 	char		*old_pwd;
+	char		**args_rl;
 	t_var		*envvar;
 	t_var		*envvar_export;
 }				t_mini;
 
+/* execute commands */
 void	commands(char **args, char **envp);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **envp);
 
+/* utils */
 void	free_array(char **array);
 int		only_space(char *str);
 int		open_file(char *file, int flags, int mode);
 char	*color_to_prompt(char *prompt);
-
 int		check_envp(char **envp);
 
 char	*ft_strjoin_free(const char *s1, const	char *s2);
@@ -52,6 +54,7 @@ char	*ft_strcpy(char *dest, char *src);
 char	*ft_strcat(char *dest, char *src);
 char	*ft_strdup_two(const char *s, char c);
 
+/* redirect */
 void 	redirect_input(char *file);
 void	redirect_output(char *file);
 void	redirect_output_append(char *file);
@@ -61,19 +64,28 @@ void	mini_echo(char	**args, int fd);
 void	mini_pwd(t_mini *data);
 void	mini_cd(char **args, t_mini	*data);
 void	mini_env(t_var *lst);
-void	mini_export(t_var *lst);
 
-t_var	*copy_envvar(char **envp);
-void	add_var_back(t_var **lst, t_var *node);
+/* export */
+void	print_export(t_mini *data);
 void	sort_var(t_var *lst);
 void	swap_nodes(t_var *current, t_var *next);
+t_var	*create_lst_export(t_mini *data);
+t_var   *copy_var_node(t_var *envvar);
+
+/* lst */
+t_var	*create_lst_envvar(char **envp);
+void	add_var_back(t_var **lst, t_var *node);
 
 t_var	*find_envvar(t_var *lst, char *name);
 char	*get_pathname(void);
 
+/* set env*/
 void    set_envvar(t_mini *data, char *name, char *value, int flag);
+void    add_new_envvar(t_var *lst, char *name, char *value, int flag);
 void    update_envvar(t_var *envvar, char *name, char *value);
-void    add_new_envvar(t_mini *data, char *name, char *value, int flag);
 char    *create_envvar_content(char *name, char *value);
+
+/* free*/
+void    free_lst(t_var *lst);
 
 #endif /* MINI_H */

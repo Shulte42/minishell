@@ -24,19 +24,19 @@ char	*get_pathname(void)
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
-	char	**args;
 	char	*pwd;
+	char	**args;
 	t_mini	data;
 
 	ft_bzero(&data, sizeof(data));
-	data.envvar = copy_envvar(envp);
-	data.envvar_export = copy_envvar(envp);
+	data.envvar = create_lst_envvar(envp);
+	data.envvar_export = create_lst_export(&data);
 	sort_var(data.envvar_export);
 	data.pwd = getcwd(NULL, 0);
 	while(1)
 	{
-		pwd = get_pathname();
-		input = readline(color_to_prompt(pwd));
+		pwd = color_to_prompt(get_pathname());
+		input = readline(pwd);
 		if (!input || !*input)
 		{
 			free(input);
@@ -45,8 +45,17 @@ int main(int ac, char **av, char **envp)
 		add_history(input);
 		args = ft_split(input, ' ');
 		free(input);
+		free(pwd);
 		if (ft_strncmp(args[0], "exit", ft_strlen("exit")) == 0)
-			break ;
+			{
+				free_lst(data.envvar);
+				free_lst(data.envvar_export);
+				free_array(args);
+				free(data.pwd);
+				if (data.old_pwd)
+					free(data.old_pwd);
+				break ;
+			}
 		else if (ft_strncmp(args[0], "echo", ft_strlen("echo")) == 0)
 			mini_echo(args, 1);
 		else if(ft_strncmp(args[0], "pwd",ft_strlen("pwd")) == 0)
@@ -60,7 +69,7 @@ int main(int ac, char **av, char **envp)
 			if (args[1])
 				set_envvar(&data, args[1], args[2], 1);
 			else
-				mini_export(data.envvar_export);
+				print_export(&data);
 		}
 		else
 			commands(args, envp);

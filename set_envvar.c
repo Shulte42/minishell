@@ -1,5 +1,18 @@
 #include "mini.h"
 
+char    *create_envvar_content(char *name, char *value)
+{
+    char    *content;
+
+    content = (char *)malloc(ft_strlen(name) + ft_strlen(value) + 2);
+    if (!content)
+        return (NULL);
+    ft_strcpy(content, name);
+    ft_strcpy(content + ft_strlen(name), "=");
+    ft_strcpy(content + ft_strlen(name) + 1, value);
+    return (content);
+}
+
 void    update_envvar(t_var *envvar, char *name, char *value)
 {
     free(envvar->name);
@@ -10,24 +23,7 @@ void    update_envvar(t_var *envvar, char *name, char *value)
     envvar->content = create_envvar_content(name, value);
 }
 
-t_var   *copy_var_node(t_var *envvar)
-{
-    t_var   *copy;
-
-    copy = ft_calloc(1, sizeof(t_var));
-    if (!copy)
-        return (NULL);
-    copy->content = ft_strdup(envvar->content);
-    copy->name = ft_strdup(envvar->name);
-    copy->value = ft_strdup(envvar->value);
-    copy->env = envvar->env;
-    copy->exp = envvar->exp;
-    copy->next = envvar->next;
-    copy->prev = envvar->prev;
-    return (copy);
-}
-
-void    add_new_envvar(t_mini *data, char *name, char *value, int flag)
+void    add_new_envvar(t_var *lst, char *name, char *value, int flag)
 {
     t_var   *envvar;
     t_var   *copy;
@@ -48,10 +44,7 @@ void    add_new_envvar(t_mini *data, char *name, char *value, int flag)
     }
     envvar->name = ft_strdup(name);
     envvar->value = ft_strdup(value);
-    add_var_back(&data->envvar, envvar);
-    copy = copy_var_node(envvar);
-    add_var_back(&data->envvar_export, copy);
-    sort_var(data->envvar_export);
+    add_var_back(&lst, envvar);
 }
 
 void    set_envvar(t_mini *data, char *name, char *value, int flag)
@@ -66,5 +59,8 @@ void    set_envvar(t_mini *data, char *name, char *value, int flag)
         update_envvar(envvar, name, value);
     }
     else
-        add_new_envvar(data, name, value, flag);
+    {
+        add_new_envvar(data->envvar, name, value, flag);
+        add_new_envvar(data->envvar_export, name, value, flag);
+    }
 }

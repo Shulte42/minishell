@@ -90,15 +90,3 @@ void	mini_env(t_var *lst)
 		current = current->next;
 	}
 }
-
-void	mini_export(t_var *lst)
-{
-	t_var	*current;
-
-	current = lst;
-	while (current)
-	{
-		printf("declare -x %s=\"%s\"\n", current->name, current->value);
-		current = current->next;
-	}
-}
