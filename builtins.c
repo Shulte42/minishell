@@ -86,7 +86,8 @@ void	mini_env(t_var *lst)
 	current  = lst;
 	while (current)
 	{
-		printf("%s\n", current->content);
+		if (current->exp)
+			printf("%s\n", current->content);
 		current = current->next;
 	}
 }

@@ -64,3 +64,46 @@ void    set_envvar(t_mini *data, char *name, char *value, int flag)
         add_new_envvar(data->envvar_export, name, value, flag);
     }
 }
+
+void    arg_with_equal(t_mini *data, char *arg)
+{
+    t_var   *var;
+    char    *name;
+    char    *value;
+
+    name = ft_strdup_two(arg, '=');
+    value = ft_strdup(ft_strchr(arg, '=') + 1);
+    var = find_envvar(data->envvar, name);
+    if (var)
+    {
+        set_envvar(data, name, value, 1);
+        free(name);
+        free(value);
+        return ;
+    }
+    set_envvar(data, name, value, 0);
+    free(name);
+    free(value);
+}
+
+void    arg_no_equal(t_mini *data, char *arg)
+{
+    t_var   *var;
+
+    var = find_envvar(data->envvar, arg);
+    if (var)
+        var->exp = true;
+    else
+        set_envvar(data, arg, NULL, 0);
+}
+
+void    analize_arg_export(char **args)
+{
+    int i;
+
+    i = 0;
+    while (args[i])
+    {
+        ; // TODO
+    }
+}
