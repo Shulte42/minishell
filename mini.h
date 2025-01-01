@@ -77,6 +77,7 @@ t_var	*create_lst_envvar(char **envp);
 void	add_var_back(t_var **lst, t_var *node);
 
 t_var	*find_envvar(t_var *lst, char *name);
+char	*get_value(t_mini *data, char *name);
 char	*get_pathname(void);
 
 /* set env*/

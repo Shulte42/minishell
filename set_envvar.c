@@ -86,7 +86,7 @@ void    arg_with_equal(t_mini *data, char *arg)
     free(value);
 }
 
-void    arg_no_equal(t_mini *data, char *arg)
+void    var_no_value(t_mini *data, char *arg)
 {
     t_var   *var;
 
@@ -94,7 +94,7 @@ void    arg_no_equal(t_mini *data, char *arg)
     if (var)
         var->exp = true;
     else
-        set_envvar(data, arg, NULL, 0);
+        set_envvar(data, arg, "", 0);
 }
 
 void    analize_arg_export(char **args)

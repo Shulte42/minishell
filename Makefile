@@ -1,6 +1,7 @@
 NAME	= mini
 SRCS	= ${wildcard *.c}
-OBJS	= ${SRCS:.c=.o}
+OBJDIR	= obj
+OBJS	= ${SRCS:%.c=${OBJDIR}/%.o}
 LIBFT	= libft
 
 all: ${NAME}
@@ -9,12 +10,15 @@ ${NAME}: ${OBJS}
 	make -C ${LIBFT}
 	cc ${OBJS} -L${LIBFT} -lreadline -lft -o $@
 
-%.o: %.c
+${OBJDIR}/%.o: %.c | ${OBJDIR}
 	cc -c $< -o $@
+
+${OBJDIR}:
+	mkdir -p ${OBJDIR}
 
 clean:
 	make clean -C ${LIBFT}
-	rm -f ${OBJS}
+	rm -rf ${OBJDIR}
 
 fclean: clean
 	make fclean -C ${LIBFT}

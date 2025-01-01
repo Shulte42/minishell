@@ -15,3 +15,15 @@ t_var	*find_envvar(t_var *lst, char *name)
 	}
 	return (NULL);
 }
+
+char	*get_value(t_mini *data, char *name)
+{
+	t_var	*envvar;
+	char	*temp;
+
+	envvar = find_envvar(data->envvar, name);
+	if (!envvar)
+		return (NULL);
+	temp = envvar->value;
+	return (temp);
+}
