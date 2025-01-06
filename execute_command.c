@@ -49,11 +49,11 @@ void	execute_command(char **cmd, char **envp)
 	if (!command_path)
 	{
 		printf("%s: command not found\n", cmd[0]);
-		exit(127);
+		return ;
 	}
 	execve(command_path, cmd, envp);
 	free_array(cmd);
 	free(command_path);
 	perror("execve");
-	exit(EXIT_FAILURE);
+	return ;
 }

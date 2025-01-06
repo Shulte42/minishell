@@ -62,7 +62,6 @@ void	redirect_heredoc(char *delimiter);
 
 void	mini_echo(char	**args, int fd);
 void	mini_pwd(t_mini *data);
-void	mini_cd(char **args, t_mini	*data);
 void	mini_env(t_var *lst);
 
 /* export */
@@ -71,6 +70,12 @@ void	sort_var(t_var *lst);
 void	swap_nodes(t_var *current, t_var *next);
 t_var	*create_lst_export(t_mini *data);
 t_var   *copy_var_node(t_var *envvar);
+
+/* cd */
+void	cd(t_mini *data, char **args);
+void	change_dir(char *dir, int flag_free, t_mini *data);
+void	update_pwd(t_mini *data, char *dir);
+char	*get_dir(char *arg, int *flag_free, t_mini *data);
 
 /* lst */
 t_var	*create_lst_envvar(char **envp);

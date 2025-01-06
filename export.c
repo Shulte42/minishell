@@ -89,7 +89,10 @@ void	print_export(t_mini *data)
 	current = data->envvar_export;
 	while (current)
 	{
-		printf("declare -x %s=\"%s\"\n", current->name, current->value);
+		if (current->exp && current->value)
+			printf("declare -x %s=\"%s\"\n", current->name, current->value);
+		else if (current->exp && !current->value)
+			printf("declare -x %s\n", current->name);
 		current = current->next;
 	}
 }

@@ -1,26 +1,5 @@
 #include "mini.h"
 
-char	*get_pathname(void)
-{
-	char	*pwd;
-	char	*result;
-	int		i;
-
-	pwd = getcwd(NULL, 0);
-	if (!pwd)
-		return (ft_strdup("$ "));
-	i = 0;
-	while (pwd[i])
-		i++;
-	while (i > 0 && pwd[--i] != '/')
-		(void)pwd;
-	if (i > 0)
-		pwd[--i] = '~';
-	result = ft_strjoin_free(ft_strdup(pwd + i), "$ ");
-	free(pwd);
-	return (result);
-}
-
 int main(int ac, char **av, char **envp)
 {
 	char	*input;
@@ -61,7 +40,7 @@ int main(int ac, char **av, char **envp)
 		else if(ft_strncmp(args[0], "pwd",ft_strlen("pwd")) == 0)
 			mini_pwd(&data);
 		else if (ft_strncmp(args[0], "cd", ft_strlen("cd")) == 0)
-			mini_cd(args, &data);
+			cd(&data, args);
 		else if (ft_strncmp(args[0], "env", ft_strlen("env")) == 0)
 			mini_env(data.envvar);
 		else if (ft_strncmp(args[0], "export", ft_strlen("export")) == 0)

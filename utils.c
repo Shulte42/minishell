@@ -26,18 +26,3 @@ int	open_file(char *file, int flags, int mode)
 	return (fd);
 }
 
-char	*color_to_prompt(char *prompt)
-{
-	char	*colored;
-	size_t	size;
-
-	size = ft_strlen(CYAN) + ft_strlen(RESET) + ft_strlen(prompt) + 1;
-	colored = malloc(size);
-	if (!colored)
-		return (NULL);
-	ft_strcpy(colored, CYAN);
-	ft_strcat(colored, prompt);
-	ft_strcat(colored, RESET);
-	free(prompt);
-	return (colored);
-}
