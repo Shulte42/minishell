@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:47:54 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/26 16:04:54 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/07 09:49:48 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ static void loop_those_shells(t_shell *minishell)
 	{
 		if(ft_get_input(minishell))
 		{
-			printf("input raws:%s\n", minishell->input);
 			ft_input_analizes(minishell);
-			printf("input trim:%s\n", minishell->input);
 		}
 	}
 }

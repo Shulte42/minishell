@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/12/30 16:55:47 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 09:56:19 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_envadd_back(t_envvar **lst, t_list *new);
+t_envvar	*ft_envlast(t_envvar *lst);
+
+
 
 #endif
