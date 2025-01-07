@@ -21,7 +21,7 @@ void	add_var_back(t_var **lst, t_var *node)
 t_var	*create_lst_envvar(char **envp)
 {
 	char	**current;
-	t_var	*node;
+	t_var	*node;ft_calloc(1, sizeof(t_var));
 	t_var	*head;
 
 	head = NULL;

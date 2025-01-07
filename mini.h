@@ -47,6 +47,7 @@ int		only_space(char *str);
 int		open_file(char *file, int flags, int mode);
 char	*color_to_prompt(char *prompt);
 int		check_envp(char **envp);
+bool	check_options(char *option);
 
 char	*ft_strjoin_free(const char *s1, const	char *s2);
 int		ft_strcmp(const char *s1, const char *s2);
@@ -70,6 +71,10 @@ void	sort_var(t_var *lst);
 void	swap_nodes(t_var *current, t_var *next);
 t_var	*create_lst_export(t_mini *data);
 t_var   *copy_var_node(t_var *envvar);
+
+/* unset */
+void	unset(t_mini *data, char **args);
+void	remove_envvar(t_var **lst, t_var *envvar);
 
 /* cd */
 void	cd(t_mini *data, char **args);

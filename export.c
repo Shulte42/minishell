@@ -34,6 +34,8 @@ t_var	*create_lst_export(t_mini *data)
 			return (NULL);
 		}
 		add_var_back(&head, node_export);
+		if (current->next == NULL)
+			remove_envvar(&head, node_export);
 		current = current->next;
 	}
 	return(head);

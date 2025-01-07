@@ -43,6 +43,8 @@ int main(int ac, char **av, char **envp)
 			cd(&data, args);
 		else if (ft_strncmp(args[0], "env", ft_strlen("env")) == 0)
 			mini_env(data.envvar);
+		else if (ft_strncmp(args[0], "unset", ft_strlen("unset")) == 0)
+			unset(&data, args);
 		else if (ft_strncmp(args[0], "export", ft_strlen("export")) == 0)
 		{
 			if (args[1])
