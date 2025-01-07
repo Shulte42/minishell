@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 09:56:19 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:01:33 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # include <stdbool.h>
 
-#include "../libft/inc/libft.h"
+# include "../../inc/libs.h"
 
 typedef struct s_list
 {
@@ -78,8 +78,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	ft_envadd_back(t_envvar **lst, t_list *new);
+//minishell
+void	ft_envadd_back(t_envvar **lst, t_envvar *new);
 t_envvar	*ft_envlast(t_envvar *lst);
+size_t	ft_strnlen(const char *start);
+char *ft_strndup(char *list);
+
 
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:13:11 by bruda-si          #+#    #+#             */
-/*   Updated: 2024/10/15 14:16:07 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 11:03:23 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,16 @@ size_t	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
+}
+
+size_t	ft_strnlen(const char *start)
+{
+	size_t i;
+
+	i = 0;
+	if (!start)
+		return (0);
+	while(start[i] != '=')
+		i++;
+	return(i);
 }

@@ -6,12 +6,12 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 14:59:46 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 09:56:00 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:32:59 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../inc/libs.h"
+#include "../../../inc/libs.h"
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -28,9 +28,9 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	curr->next = new;
 }
 
-void	ft_envadd_back(t_envvar **lst, t_list *new)
+void	ft_envadd_back(t_envvar **lst, t_envvar *new)
 {
-	t_list	*curr;
+	t_envvar	*curr;
 
 	if (!lst)
 		return ;

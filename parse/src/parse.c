@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:47:54 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/07 09:49:48 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 10:42:23 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ int main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	shell = ft_start_shell();
+	printf("main l60\n");
 	shell->envvars = ft_envvar_list(env);
+	printf("cont:%s\nname:%s\nvalue:%s\n", shell->envvars->content, shell->envvars->name, shell->envvars->value);
 	loop_those_shells(shell);
 	free(shell->input);
 	cwd = getcwd(NULL, 0);
