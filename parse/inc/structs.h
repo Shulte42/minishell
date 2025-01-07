@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/07 13:51:34 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:23:22 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ typedef struct envvar_struct
     struct envvar_struct *prev;
 }   t_envvar;
 
-
+typedef struct builtins_struct
+{
+    
+}   t_builtins;
 
 typedef struct s_shell
 {
