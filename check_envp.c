@@ -6,7 +6,7 @@ int	check_envp(char **envp)
 
 	if (!envp || !*envp)
 	{
-		printf("environment not found\n");
+		printf("-minishell: environment not found\n");
 		return (1);
 	}
 	i = 0;
@@ -18,12 +18,12 @@ int	check_envp(char **envp)
 				return (0);
 			else
 			{
-				printf("PATH variable is empty\n");
+				printf("-minishell: PATH variable is empty\n");
 				return (1);
 			}
 		}
 		i++;
 	}
-	printf("PATH variable not found\n");
+	printf("-minishell: PATH variable not found\n");
 	return (1);
 }

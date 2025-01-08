@@ -27,3 +27,12 @@ void    free_lst(t_var *lst)
         lst = temp;
     }
 }
+
+void    free_exit(t_mini *data)
+{
+    free_lst(data->envvar);
+	free_lst(data->envvar_export);
+	free(data->pwd);
+	if (data->old_pwd)
+		free(data->old_pwd);
+}

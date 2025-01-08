@@ -54,9 +54,12 @@ void    set_envvar(t_mini *data, char *name, char *value, int flag)
     envvar = find_envvar(data->envvar, name);
     if (envvar)
     {
-        update_envvar(envvar, name, value);
-        envvar = find_envvar(data->envvar_export, name);
-        update_envvar(envvar, name, value);
+        if (value)
+        {
+            update_envvar(envvar, name, value);
+            envvar = find_envvar(data->envvar_export, name);
+            update_envvar(envvar, name, value);
+        }
     }
     else
     {

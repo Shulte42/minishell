@@ -18,6 +18,7 @@ int main(int ac, char **av, char **envp)
 		input = readline(pwd);
 		if (!input || !*input)
 		{
+			free(pwd);
 			free(input);
 			continue ;
 		}
@@ -27,12 +28,8 @@ int main(int ac, char **av, char **envp)
 		free(pwd);
 		if (ft_strncmp(args[0], "exit", ft_strlen("exit")) == 0)
 			{
-				free_lst(data.envvar);
-				free_lst(data.envvar_export);
+				free_exit(&data);
 				free_array(args);
-				free(data.pwd);
-				if (data.old_pwd)
-					free(data.old_pwd);
 				break ;
 			}
 		else if (ft_strncmp(args[0], "echo", ft_strlen("echo")) == 0)
@@ -53,7 +50,7 @@ int main(int ac, char **av, char **envp)
 				print_export(&data);
 		}
 		else
-			commands(args, envp);
+			commands(&data, args, envp);
 		free_array(args);
 	}
 	return (0);

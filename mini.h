@@ -37,12 +37,12 @@ typedef struct	s_mini
 }				t_mini;
 
 /* execute commands */
-void	commands(char **args, char **envp);
+void	commands(t_mini	*data, char **args, char **envp);
 char	*get_command_path(char *cmd, char **envp);
-void	execute_command(char **cmd, char **envp);
+void	execute_command(char **cmd, char **env_var);
+char	**envvar_array(t_var *lst);
 
 /* utils */
-void	free_array(char **array);
 int		only_space(char *str);
 int		open_file(char *file, int flags, int mode);
 char	*color_to_prompt(char *prompt);
@@ -97,6 +97,8 @@ void    update_envvar(t_var *envvar, char *name, char *value);
 char    *create_envvar_content(char *name, char *value);
 
 /* free*/
-void    free_lst(t_var *lst);
+void	free_array(char **array);
+void	free_lst(t_var *lst);
+void	free_exit(t_mini *data);
 
 #endif /* MINI_H */

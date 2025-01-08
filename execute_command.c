@@ -1,17 +1,52 @@
 #include "mini.h"
 
-void	commands(char **args, char **envp)
+char	**envvar_array(t_var *lst)
 {
-	pid_t	pid;
+	t_var	*temp;
+	char	**env_var;
+	int		i;
 
-	pid = fork();
-	if (pid == 0)
-		execute_command(args, envp);
-	else
-		wait(NULL);
+	i = 0;
+	temp = lst;
+	while (temp)
+	{
+		if (temp->env)
+			i++;
+		temp = temp->next;
+	}
+	env_var = (char **)malloc((i + 1) * sizeof(char *));
+	if (!env_var)
+		return (NULL);
+	temp = lst;
+	i = -1;
+	while (temp)
+	{
+		if (temp->env)
+			env_var[++i] = ft_strdup(temp->content);
+		temp = temp->next;
+	}
+	env_var[++i] = NULL;
+	return (env_var);
 }
 
-char	*get_command_path(char *cmd, char **envp)
+void	commands(t_mini	*data, char **args, char **envp)
+{
+	pid_t	pid;
+	char	**env_var;
+
+	env_var = NULL;
+	pid = fork();
+	if (pid == 0)
+	{
+		env_var = envvar_array(data->envvar);
+		execute_command(args, env_var);
+	}
+	else
+		wait(NULL);
+	free_array(env_var);
+}
+
+char	*get_command_path(char *cmd, char **env_var)
 {
 	char	**all_paths;
 	char	*current_path;
@@ -19,9 +54,9 @@ char	*get_command_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while((ft_strnstr(envp[i], "PATH", 4)) == NULL)
+	while((ft_strnstr(env_var[i], "PATH", 4)) == NULL)
 		i++;
-	all_paths = ft_split(envp[i] + 5, ':');
+	all_paths = ft_split(env_var[i] + 5, ':');
 	i = 0;
 	while (all_paths[i])
 	{
@@ -39,19 +74,19 @@ char	*get_command_path(char *cmd, char **envp)
 	return (NULL);
 }
 
-void	execute_command(char **cmd, char **envp)
+void	execute_command(char **cmd, char **env_var)
 {
 	char	*command_path;
 
-	if (!cmd[0] || only_space(cmd[0]) || check_envp(envp))
+	if (!cmd[0] || only_space(cmd[0]) || check_envp(env_var))
 		return ;
-	command_path = get_command_path(cmd[0], envp);
+	command_path = get_command_path(cmd[0], env_var);
 	if (!command_path)
 	{
-		printf("%s: command not found\n", cmd[0]);
+		printf("-minishell: %s: command not found\n", cmd[0]);
 		return ;
 	}
-	execve(command_path, cmd, envp);
+	execve(command_path, cmd, env_var);
 	free_array(cmd);
 	free(command_path);
 	perror("execve");
