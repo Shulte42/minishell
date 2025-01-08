@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:32:57 by shulte            #+#    #+#             */
-/*   Updated: 2024/12/29 13:43:20 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/08 10:27:50 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ bool ft_quote_checker(char *input)
 		printf("Fail to allocat memory (falta terminar!!!)\n");//todo; funcao propria pra lidar com errors
 		return (false);
 	}
+	printf("%s\n", input);
 	return (true);
 }
