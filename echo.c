@@ -9,7 +9,7 @@ void	mini_echo(char	**args, int fd)
 		return ;
 	flag_nl = false;
 	i = 1;
-	if (args[i] && ft_strncmp(args[i], "-n", sizeof(args[i])) == 0)
+	if (args[i] && ft_strcmp(args[i], "-n") == 0)
 	{
 		flag_nl = true;
 		i++;

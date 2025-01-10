@@ -8,7 +8,7 @@ char	*get_pathname(void)
 
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
-		return (ft_strdup("$ "));
+		return (ft_strdup("minishell$ "));
 	i = 0;
 	while (pwd[i])
 		i++;

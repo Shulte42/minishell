@@ -29,9 +29,6 @@ typedef struct		s_var
 
 typedef struct	s_mini
 {
-	char		*pwd;
-	char		*old_pwd;
-	char		**args_rl;
 	t_var		*envvar;
 	t_var		*envvar_export;
 }				t_mini;
@@ -54,6 +51,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strcat(char *dest, char *src);
 char	*ft_strdup_two(const char *s, char c);
+char	*ft_strndup(const char *s, size_t n);
 
 /* redirect */
 void 	redirect_input(char *file);
@@ -72,6 +70,10 @@ void	swap_nodes(t_var *current, t_var *next);
 t_var	*create_lst_export(t_mini *data);
 t_var   *copy_var_node(t_var *envvar);
 
+/* dolar */
+char	*expand_envvar(t_mini *data, char *input);
+void	expand_envvar_two(char *expanded, char *var_value, int *j);
+char	*extract_var_name(char *input, int *index);
 /* unset */
 void	unset(t_mini *data, char **args);
 void	remove_envvar(t_var **lst, t_var *envvar);
