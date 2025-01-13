@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 14:58:37 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 14:04:04 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:38:59 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 t_envvar	*ft_envlast(t_envvar *lst)
+{
+	while(lst)
+	{
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+t_tokens	*ft_tokenlast(t_tokens *lst)
 {
 	while(lst)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:47:54 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/08 14:24:07 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/13 11:38:43 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int main(int argc, char **argv, char **env)
 	(void)argv;
 	shell = ft_start_shell();
 	shell->envvars = ft_envvar_list(env);
-	printf("cont:%s\nname:%s\nvalue:%s\n", shell->envvars->content, shell->envvars->name, shell->envvars->value);
 	loop_those_shells(shell);
 	free(shell->input);
 	cwd = getcwd(NULL, 0);

@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 11:01:33 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/13 12:39:09 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,9 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //minishell
 void	ft_envadd_back(t_envvar **lst, t_envvar *new);
+void	ft_tokenadd_back(t_tokens **lst, t_tokens *new);
 t_envvar	*ft_envlast(t_envvar *lst);
+t_tokens	*ft_tokenlast(t_tokens *lst);
 size_t	ft_strnlen(const char *start);
 char *ft_strndup(char *list);
 
