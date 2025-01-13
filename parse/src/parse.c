@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:47:54 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/13 11:38:43 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:30:45 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,18 @@ bool    ft_get_input(t_shell *shell)
 	}
 	return (true);
 }
+
 static void loop_those_shells(t_shell *minishell)
 {
 	while (1)
 	{
 		if(ft_get_input(minishell))
 		{
-			// if (minishell->input == "exit")
-			// 	ft_clean_exit(minishell); // FUNCAO PARA FECHAR
+			if (ft_strncmp(minishell->input, "exit", ft_strlen(minishell->input)) == 0)
+			{
+				ft_clean_exit(minishell);
+				break;
+			}
 			ft_input_analizes(minishell);
 		}
 	}

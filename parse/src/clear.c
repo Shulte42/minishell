@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/13 15:40:22 by bruda-si         ###   ########.fr       */
+/*   Created: 2025/01/13 15:30:06 by bruda-si          #+#    #+#             */
+/*   Updated: 2025/01/13 15:40:46 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTIONS_H
-# define FUNCTIONS_H
+#include "../inc/libs.h"
 
-#include "structs.h"
+static void    ft_tokenclear(t_tokens *lst)
+{
+	t_tokens	*tokens;
+	t_tokens	*next;
 
-void    ft_input_analizes(t_shell *shell);
-bool ft_quote_checker(char *input);
-t_envvar    *ft_envvar_list(char **env);
-char *ft_gettoken(char  *input, int delim, bool fst);
-void    ft_tokenization(t_shell *shell);
-void	ft_clean_exit(t_shell	*minishell);
+	tokens = lst;
+	while (tokens != NULL)
+	{
+		next = tokens->next;
+		free(tokens->token);
+        free(tokens);
+		tokens = next;
+	}
+}
 
-#endif
+void	ft_clean_exit(t_shell	*minishell)
+{
+	ft_tokenclear(minishell->tokens);
+}
