@@ -1,5 +1,6 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
+/* < */
 void 	redirect_input(char *file)
 {
 	int	fd_in;
@@ -14,6 +15,7 @@ void 	redirect_input(char *file)
 	close(fd_in);
 }
 
+/* > */
 void	redirect_output(char *file)
 {
 	int	fd_out;
@@ -28,6 +30,7 @@ void	redirect_output(char *file)
 	close(fd_out);
 }
 
+/* >> */
 void	redirect_output_append(char *file)
 {
 	int	fd_out;
@@ -42,6 +45,7 @@ void	redirect_output_append(char *file)
 	close (fd_out);
 }
 
+/* << */
 void	redirect_heredoc(char *delimiter)
 {
 	int		fd[2];

@@ -1,5 +1,4 @@
-#include "../mini.h"
-
+#include "../inc/libs.h"
 char	*extract_var_name(char *input, int *index)
 {
 	char	*var_name;
@@ -23,7 +22,7 @@ void	expand_envvar_two(char *expanded, char *var_value, int *j)
 	*j += ft_strlen(var_value);
 }
 
-char	*expand_envvar(t_mini *data, char *input)
+char	*expand_envvar(t_shell *data, char *input)
 {
 	char	*expanded;
 	char	*var_name;

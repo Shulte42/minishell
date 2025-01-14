@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 int	ft_strcmp(const char *s1, const char *s2)
 {

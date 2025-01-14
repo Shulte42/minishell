@@ -1,6 +1,6 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
-void	mini_pwd(t_mini	*data)
+void	mini_pwd(t_shell	*data)
 {
 	char	*pwd;
 	t_var	*pwd_envvar;

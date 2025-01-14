@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 char	*get_pathname(void)
 {

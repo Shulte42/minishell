@@ -1,6 +1,6 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
-char	*get_dir(char *arg, int *flag_free, t_mini *data)
+char	*get_dir(char *arg, int *flag_free, t_shell *data)
 {
 	char	*dir;
 
@@ -22,7 +22,7 @@ char	*get_dir(char *arg, int *flag_free, t_mini *data)
 	return (dir);
 }
 
-void	update_pwd(t_mini *data, char *dir)
+void	update_pwd(t_shell *data, char *dir)
 {
 	char	*pwd;
 	char	*oldpwd;
@@ -46,7 +46,7 @@ void	update_pwd(t_mini *data, char *dir)
 	free(pwd);
 }
 
-void	change_dir(char *dir, int flag_free, t_mini *data)
+void	change_dir(char *dir, int flag_free, t_shell *data)
 {
 	struct stat buf;
 	if (dir && dir[0] != 0 && chdir(dir) == -1)
@@ -65,7 +65,7 @@ void	change_dir(char *dir, int flag_free, t_mini *data)
 		free(dir);
 }
 
-void    cd(t_mini *data, char **args)
+void    cd(t_shell *data, char **args)
 {
 	char	*dir;
 	int		flag_free;

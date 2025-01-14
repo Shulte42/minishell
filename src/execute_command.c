@@ -1,5 +1,4 @@
-#include "../mini.h"
-
+#include "../inc/libs.h"
 char	**envvar_array(t_var *lst)
 {
 	t_var	*temp;
@@ -29,7 +28,7 @@ char	**envvar_array(t_var *lst)
 	return (env_var);
 }
 
-void	commands(t_mini	*data, char **args, char **envp)
+void	commands(t_shell	*data, char **args, char **envp)
 {
 	pid_t	pid;
 	char	**env_var;

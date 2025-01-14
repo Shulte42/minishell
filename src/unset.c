@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 bool	check_options(char *option)
 {
@@ -33,7 +33,7 @@ void	remove_envvar(t_var **lst, t_var *envvar)
 	}
 }
 
-void	unset(t_mini *data, char **args)
+void	unset(t_shell *data, char **args)
 {
 	t_var	*envvar;
 	int		i;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
+#    By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2025/01/14 12:57:56 by bruda-si         ###   ########.fr        #
+#    Updated: 2025/01/14 14:30:40 by luiz-dos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,10 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)teste.c \
 			$(SRC_DIR)unset.c \
 			$(SRC_DIR)utils.c \
+			$(SRC_DIR)clear.c \
+			$(SRC_DIR)input_analizes.c \
+			$(SRC_DIR)quote_checker.c \
+			$(SRC_DIR)tokenization.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

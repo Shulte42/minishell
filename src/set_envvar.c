@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 char    *create_envvar_content(char *name, char *value)
 {
@@ -47,7 +47,7 @@ void    add_new_envvar(t_var *lst, char *name, char *value, int flag)
     add_var_back(&lst, envvar);
 }
 
-void    set_envvar(t_mini *data, char *name, char *value, int flag)
+void    set_envvar(t_shell *data, char *name, char *value, int flag)
 {
     t_var   *envvar;
 

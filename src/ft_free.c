@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 void	free_array(char **array)
 {
@@ -28,7 +28,7 @@ void    free_lst(t_var *lst)
     }
 }
 
-void    free_exit(t_mini *data)
+void    free_exit(t_shell *data)
 {
     free_lst(data->envvar);
 	free_lst(data->envvar_export);

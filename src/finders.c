@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 t_var	*find_envvar(t_var *lst, char *name)
 {
@@ -16,7 +16,7 @@ t_var	*find_envvar(t_var *lst, char *name)
 	return (NULL);
 }
 
-char	*get_value(t_mini *data, char *name)
+char	*get_value(t_shell *data, char *name)
 {
 	t_var	*envvar;
 	char	*temp;

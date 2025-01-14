@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 // int main(int ac, char **av, char **envp)
 // {

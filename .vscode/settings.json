@@ -1,5 +1,9 @@
 {
     "files.associations": {
-        "mini.h": "c"
+        "mini.h": "c",
+        "libs.h": "c",
+        "stat.h": "c",
+        "functions.h": "c",
+        "structs.h": "c"
     }
 }

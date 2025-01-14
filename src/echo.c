@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 void	mini_echo(char	**args, int fd)
 {

@@ -1,6 +1,0 @@
-\\ structs
-aloxar os ponteiros de prev nas listas
-
-\\funcoes
-funcao de exit
-protecao para numero de argumentos invaldos

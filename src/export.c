@@ -1,4 +1,4 @@
-#include "../mini.h"
+#include "../inc/libs.h"
 
 t_var   *copy_var_node(t_var *envvar)
 {
@@ -17,7 +17,7 @@ t_var   *copy_var_node(t_var *envvar)
     return (copy);
 }
 
-t_var	*create_lst_export(t_mini *data)
+t_var	*create_lst_export(t_shell *data)
 {
 	t_var	*current;
 	t_var	*head;
@@ -83,7 +83,7 @@ void	sort_var(t_var *lst)
 	}
 }
 
-void	print_export(t_mini *data)
+void	print_export(t_shell *data)
 {
 	t_var	*current;
 
