@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*ft_strcat(char *dest, char *src)
 {

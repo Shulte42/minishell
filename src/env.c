@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 void	mini_env(t_var *lst)
 {

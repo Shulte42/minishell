@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*ft_strdup_two(const char *s, char c)
 {

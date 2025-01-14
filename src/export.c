@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 t_var   *copy_var_node(t_var *envvar)
 {

@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 t_var	*find_envvar(t_var *lst, char *name)
 {

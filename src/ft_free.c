@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 void	free_array(char **array)
 {

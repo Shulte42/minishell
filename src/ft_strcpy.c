@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*ft_strcpy(char *dest, char *src)
 {

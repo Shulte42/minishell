@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	**envvar_array(t_var *lst)
 {
@@ -34,6 +34,7 @@ void	commands(t_mini	*data, char **args, char **envp)
 	pid_t	pid;
 	char	**env_var;
 
+	(void)envp;
 	env_var = NULL;
 	pid = fork();
 	if (pid == 0)

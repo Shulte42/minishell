@@ -1,8 +1,8 @@
-#include "mini.h"
+#include "../mini.h"
 
 bool	check_options(char *option)
 {
-	char	*arg;
+	// char	*arg;
 
 	if (option[0] == '-')
 	{

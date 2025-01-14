@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*extract_var_name(char *input, int *index)
 {

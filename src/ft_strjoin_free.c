@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*ft_strjoin_free(const char *s1, const	char *s2)
 {

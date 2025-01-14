@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 void	mini_pwd(t_mini	*data)
 {

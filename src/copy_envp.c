@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 void	add_var_back(t_var **lst, t_var *node)
 {

@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 int main(int ac, char **av, char **envp)
 {
@@ -8,6 +8,8 @@ int main(int ac, char **av, char **envp)
 	char	**args;
 	t_mini	data;
 
+	(void)av;
+	(void)ac;
 	ft_bzero(&data, sizeof(data));
 	data.envvar = create_lst_envvar(envp);
 	data.envvar_export = create_lst_export(&data);

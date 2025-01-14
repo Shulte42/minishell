@@ -1,4 +1,4 @@
-#include "mini.h"
+#include "../mini.h"
 
 char	*get_dir(char *arg, int *flag_free, t_mini *data)
 {
