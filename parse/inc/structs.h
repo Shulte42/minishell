@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/08 13:10:35 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/14 10:51:29 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct builtins_struct
 typedef struct tokens_struct
 {
 	char	*token;
+	int		type;
 	struct tokens_struct	*next;
 	struct tokens_struct	*prev;
 }	t_tokens;
