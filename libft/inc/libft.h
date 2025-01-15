@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/15 10:59:47 by bruda-si         ###   ########.fr       */
-=======
-/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 16:09:36 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/14 14:47:36 by luiz-dos         ###   ########.fr       */
->>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
+/*   Updated: 2025/01/15 11:17:52 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +84,7 @@ void	ft_tokenadd_back(t_tokens **lst, t_tokens *new);
 t_var	*ft_envlast(t_var *lst);
 t_tokens	*ft_tokenlast(t_tokens *lst);
 size_t	ft_strnlen(const char *start);
-<<<<<<< HEAD
 char	*ft_strndup(const char *s, size_t n);
-=======
->>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
 // char	*ft_strndup(char *list);
 
 

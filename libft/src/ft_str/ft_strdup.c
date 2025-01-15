@@ -3,17 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:05:59 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/15 10:59:28 by bruda-si         ###   ########.fr       */
-=======
-/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 17:05:59 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/14 14:47:26 by luiz-dos         ###   ########.fr       */
->>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
+/*   Updated: 2025/01/15 11:18:15 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +36,6 @@ char	*ft_strdup(const char *s)
 // 	n_str[ft_strnlen(list)] = '\0';
 // 	return (n_str);
 // }
-<<<<<<< HEAD
 
 char	*ft_strndup(const char *s, size_t n)
 {
@@ -64,5 +56,3 @@ char	*ft_strndup(const char *s, size_t n)
 	dup[i] = '\0';
 	return (dup);
 }
-=======
->>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
