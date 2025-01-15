@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
 /*   Updated: 2025/01/15 11:00:31 by bruda-si         ###   ########.fr       */
+=======
+/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
+/*   Updated: 2025/01/14 15:41:04 by luiz-dos         ###   ########.fr       */
+>>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +53,11 @@ typedef enum	e_builtins
 	UNSET,
 	ENV,
 	EXIT
+<<<<<<< HEAD
 }				t_enum;
+=======
+};
+>>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
 
 typedef struct				tokens_struct
 {

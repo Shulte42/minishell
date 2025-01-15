@@ -3,10 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
+<<<<<<< HEAD
 #    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
 #    Updated: 2025/01/15 10:59:59 by bruda-si         ###   ########.fr        #
+=======
+#    By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
+#    Updated: 2025/01/14 14:30:40 by luiz-dos         ###   ########.fr        #
+>>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +47,10 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)ft_strcpy.c \
 			$(SRC_DIR)ft_strdup_two.c \
 			$(SRC_DIR)ft_strjoin_free.c \
+<<<<<<< HEAD
+=======
+			$(SRC_DIR)ft_strndup.c \
+>>>>>>> 2c0ba6a32a712db57eb291ed20e76b8ddf2ad594
 			$(SRC_DIR)main.c \
 			$(SRC_DIR)prompt.c \
 			$(SRC_DIR)pwd.c \
