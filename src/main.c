@@ -41,6 +41,7 @@ static void loop_those_shells(t_shell *minishell)
 				break;
 			}
 			ft_input_analizes(minishell);
+			// ft_type_tokens(minishell->tokens);
 		}
 	}
 }

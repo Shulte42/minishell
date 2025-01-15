@@ -23,7 +23,7 @@ char	*get_value(t_shell *data, char *name)
 
 	envvar = find_envvar(data->envvar, name);
 	if (!envvar)
-		return (NULL);
+		return (" ");
 	temp = envvar->value;
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/13 14:58:39 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/15 14:49:26 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char *ft_gettoken(char  *input, int delim, bool fst)
 	}
 	else
 		static_str = NULL;
-	return (token);
+	return (ft_strdup(token));
 }
 
 t_tokens	*ft_addtoken(char *token)
@@ -58,6 +58,7 @@ void    ft_tokenization(t_shell *shell)
 
 	tokens = NULL;
 	input = shell->input;
+	printf("input antes de gettoken:%s\n", input);
 	token = ft_gettoken(input, 32, true);
 	printf("token1:%s\n", token);
 	while (token != NULL)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/14 14:44:27 by luiz-dos         ###   ########.fr       */
+/*   Updated: 2025/01/15 13:13:13 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 #include "structs.h"
 
+/* tokens */
 void    ft_input_analizes(t_shell *data);
 bool    ft_quote_checker(char *input);
 char    *ft_gettoken(char  *input, int delim, bool fst);
 void    ft_tokenization(t_shell *data);
 void    ft_clean_exit(t_shell *minishell);
+void    ft_type_tokens(t_tokens *tokens);
 
 /* execute commands */
 void	commands(t_shell	*data, char **args, char **envp);

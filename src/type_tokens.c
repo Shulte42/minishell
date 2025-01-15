@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_analizes.c                                   :+:      :+:    :+:   */
+/*   type_tokens.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:18:15 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/15 13:46:06 by bruda-si         ###   ########.fr       */
+/*   Created: 2025/01/15 13:11:29 by bruda-si          #+#    #+#             */
+/*   Updated: 2025/01/15 13:27:38 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libs.h"
 
-void    ft_parsing_loop(t_shell *data)
+void    ft_type_tokens(t_tokens *tokens)
 {
-    if (ft_quote_checker(data->input))
-    {
-        data->input = expand_envvar(data, data->input);
-        printf("input expanded:%s\n", data->input);
-        ft_tokenization(data);
-    }
-}
+	t_tokens    *node;
 
-void    ft_input_analizes(t_shell *data)
-{
-    ft_parsing_loop(data);
+	while (node->next)
+	{
+		if(ft_strcmp(node->token, "echo") == 0)
+		
+	}
 }

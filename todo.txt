@@ -1,0 +1,17 @@
+///to fix
+~/minishell$ aaa bbb ccc
+aaa bbb ccc
+token1:aaa
+struct token:aaa
+struct token:bbb
+struct token:ccc
+~/minishell$ aaa bbb $pwd
+aaa bbb $pwd
+token1:aaa
+struct token:aaa
+struct token:bbb
+~/minishell$ aaa bbb
+aaa bbb
+token1:(null)
+////
+

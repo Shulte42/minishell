@@ -40,6 +40,7 @@ char	*expand_envvar(t_shell *data, char *input)
 		if (input[i] == '$')
 		{
 			var_name = extract_var_name(input, &i);
+			printf("var_name:%s\n", var_name);
 			var_value = get_value(data, var_name);
 			free(var_name);
 			expand_envvar_two(expanded, var_value, &j);
