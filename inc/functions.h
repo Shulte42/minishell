@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/15 15:14:21 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:11:02 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ char    *ft_gettoken(char  *input, int delim, bool fst);
 void    ft_tokenization(t_shell *data);
 void    ft_clean_exit(t_shell *minishell);
 void    ft_type_tokens(t_tokens *tokens);
+void    ft_quote_handle(t_shell *shell);
+int	ft_inside_quotes(char	*str, int index);
+
 
 /* execute commands */
 void	commands(t_shell	*data, char **args, char **envp);

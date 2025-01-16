@@ -6,7 +6,7 @@
 /*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/15 11:17:03 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:56:13 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct				tokens_struct
 {
 	char					*token;
 	int						type;
+	bool					double_quotes;
+	bool					single_qoutes;
 	struct tokens_struct	*next;
 	struct tokens_struct	*prev;
 }							t_tokens;

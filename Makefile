@@ -6,7 +6,7 @@
 #    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2025/01/15 11:17:23 by bruda-si         ###   ########.fr        #
+#    Updated: 2025/01/16 13:35:33 by bruda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ RM		= rm -f
 # Directories
 SRC_DIR = src/
 OBJ_DIR = obj/
+PRS_DIR = obj_parse/
 
 # Libraries
 LIBFT_DIR	= libft/
@@ -51,6 +52,7 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)clear.c \
 			$(SRC_DIR)input_analizes.c \
 			$(SRC_DIR)quote_checker.c \
+			$(SRC_DIR)quote_handle.c \
 			$(SRC_DIR)tokenization.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
