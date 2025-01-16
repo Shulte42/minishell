@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
+#    By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2025/01/15 10:59:59 by bruda-si         ###   ########.fr        #
+#    Updated: 2025/01/16 13:27:44 by luiz-dos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)pwd.c \
 			$(SRC_DIR)redirection.c \
 			$(SRC_DIR)set_envvar.c \
+			$(SRC_DIR)set_envvar2.c \
 			$(SRC_DIR)teste.c \
 			$(SRC_DIR)unset.c \
 			$(SRC_DIR)utils.c \
