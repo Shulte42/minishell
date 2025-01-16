@@ -1,5 +1,9 @@
 {
     "files.associations": {
         "sstream": "c"
+    },
+
+    "terminal.integrated.env.linux": {
+    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     }
 }

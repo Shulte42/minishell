@@ -6,11 +6,11 @@
 #    By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2025/01/16 13:35:33 by bruda-si         ###   ########.fr        #
+#    Updated: 2025/01/16 16:01:56 by bruda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= mini
+NAME	= minishell
 CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -g
 RM		= rm -f
