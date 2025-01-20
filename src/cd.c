@@ -8,7 +8,7 @@ char	*get_dir(char *arg, int *flag_free, t_shell *data)
 	if (ft_strcmp(arg, "-") == 0)
 	{
 		dir = get_value(data, "OLDPWD");
-		if (!dir)
+		if (only_space(dir))
 		{
 			printf("NO OLDPWD\n");
 			return (NULL);
@@ -40,7 +40,7 @@ void	update_pwd(t_shell *data, char *dir)
 		return ;
 	}
 	oldpwd = get_value(data, "PWD");
-	if (oldpwd != NULL)
+	if (only_space(oldpwd))
 		set_envvar(data, "OLDPWD", oldpwd, 1);
 	set_envvar(data, "PWD", pwd, 0);
 	free(pwd);
@@ -75,7 +75,7 @@ void    cd(t_shell *data, char **args)
 	if (!args[1] || ft_strcmp(args[1], "--") == 0)
 	{
 		dir = get_value(data, "HOME");
-		if (!dir)
+		if (only_space(dir))
 			printf("HOME not set\n");
 	}
 	else if (args[1])

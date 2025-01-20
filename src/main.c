@@ -42,6 +42,14 @@ int	ainput(t_shell *data)
 		print_export(data);
 	else if (ft_strcmp(input[0], "exit") == 0)
 		return (1);
+	else if (ft_strcmp(input[0], "cd") == 0)
+		cd(data, input);
+	else if (ft_strcmp(input[0], "unset") == 0)
+		unset(data, input);
+	else if (ft_strcmp(input[0], "pwd") == 0)
+		mini_pwd(data);
+	else if (ft_strcmp(input[0], "echo") == 0)
+		mini_echo(input, 1);
 	else
 		commands(data, input);
 	return (0);
@@ -53,6 +61,7 @@ static void loop_those_shells(t_shell *minishell)
 	{
 		if(ft_get_input(minishell))
 		{
+			minishell->input = expand_envvar(minishell, minishell->input);
 			if (ainput(minishell))
 				break ;
 			// if (ft_strncmp(minishell->input, "exit", ft_strlen(minishell->input)) == 0)
@@ -79,7 +88,6 @@ int main(int ac, char **av, char **envp)
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
-	sort_var(data->envvar);
 	set_shlvl(data);
 	set_questionvar(data);
 	loop_those_shells(data);

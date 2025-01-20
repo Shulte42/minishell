@@ -92,4 +92,6 @@ void	free_array(char **array);
 void	free_lst(t_var *lst);
 void	free_exit(t_shell *data);
 
+int     ainput(t_shell *data);
+
 #endif /* FUNCTIONS_H */
