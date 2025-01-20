@@ -1,4 +1,4 @@
 ///to fix
-
+funcao que separa input em espaços, >| 
 ////
 

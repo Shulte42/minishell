@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:15:41 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/16 15:14:18 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:17:48 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ void    ft_quote_handle(t_shell *shell)
 			}
 			else if (quote == input[i])
 			{
-				// if (quote == '\'')
-				// 	shell->tokens->single_qoutes = true;
-				// if (quote == '"')
-				// 	shell->tokens->double_quotes = true;
 				str_quotes = ft_strndup(&input[start + 1], (i - (start + 1)));
 				printf("str_quotes:%s\n", str_quotes);
 			}
