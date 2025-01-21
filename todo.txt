@@ -1,4 +1,5 @@
 ///to fix
 funcao que separa input em espaços, >| 
+exit so funciona sozinho
 ////
 

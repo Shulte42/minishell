@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:15:41 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/20 17:17:48 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/21 16:48:28 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void    ft_quote_handle(t_shell *shell)
 	input = ft_strdup(shell->input);
 	quote = 0;
 	i = 0;
-	printf("quote handler\n");
 	while (input[i])
 	{
 		if (input[i] == '"' || input[i] == '\'')

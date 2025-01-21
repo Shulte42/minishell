@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/16 15:11:02 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/21 16:30:14 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ bool    ft_quote_checker(char *input);
 char    *ft_gettoken(char  *input, int delim, bool fst);
 void    ft_tokenization(t_shell *data);
 void    ft_clean_exit(t_shell *minishell);
-void    ft_type_tokens(t_tokens *tokens);
+void    ft_type_tokens(t_shell *tokens);
 void    ft_quote_handle(t_shell *shell);
 int	ft_inside_quotes(char	*str, int index);
-
+bool	ft_check_piperedir(char	c);
+int	ft_c_piperedir(char	*str);
+void    ft_space_piperedir(t_shell  *shell);
+void    ft_type_tokens(t_shell *tokens);
 
 /* execute commands */
 void	commands(t_shell	*data, char **args, char **envp);

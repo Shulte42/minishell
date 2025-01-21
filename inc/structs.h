@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/16 13:56:13 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:16:45 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ typedef enum	e_builtins
 	EXPORT,
 	UNSET,
 	ENV,
-	EXIT
+	EXIT,
 }				t_enum;
 
 typedef struct				tokens_struct
 {
-	char					*token;
+	char					*content;
 	int						type;
 	bool					double_quotes;
 	bool					single_qoutes;

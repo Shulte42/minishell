@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/16 13:32:56 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:13:17 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_tokens	*ft_addtoken(char *token)
 
 	head = NULL;
 	new_node = ft_calloc(1, sizeof(t_tokens));
-	new_node->token = token;
+	new_node->content = token;
 	ft_tokenadd_back(&head, new_node);
 	return (head);
 }
@@ -65,6 +65,6 @@ void    ft_tokenization(t_shell *shell)
 	{
 		tokens = ft_addtoken(token);
 		token = ft_gettoken(input, 32, false);
-		printf("struct token:%s\n", tokens->token);
+		printf("struct token:%s\n", tokens->content);
 	}
 }
