@@ -1,5 +1,7 @@
 ///to fix
 funcao que separa input em espaços, >| 
 exit so funciona sozinho
+mudar gettoken para um split e 
+mudar addtoken para trabalhar com array de token ao inves de token separados
 ////
 
