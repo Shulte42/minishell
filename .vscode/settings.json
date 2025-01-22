@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "sstream": "c"
+        "sstream": "c",
+        "libs.h": "c"
     },
 
     "terminal.integrated.env.linux": {

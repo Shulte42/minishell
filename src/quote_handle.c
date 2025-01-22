@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 10:15:41 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/21 16:48:28 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/22 11:29:55 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void    ft_quote_handle(t_shell *shell)
 				str_quotes = ft_strndup(&input[start + 1], (i - (start + 1)));
 				printf("str_quotes:%s\n", str_quotes);
 			}
-			
 		}
 		i++;
 	}

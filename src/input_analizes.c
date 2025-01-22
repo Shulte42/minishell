@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:18:15 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/22 10:21:02 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/22 14:52:29 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void    ft_parsing_loop(t_shell *shell)
 		shell->input = expand_envvar(shell, shell->input);
 		ft_space_piperedir(shell);
 		ft_quote_handle(shell);
-		ft_tokenization(shell);
+		ft_tokenization(&shell);
+		// printf("token:%s\n", shell->tokens->content);//SEGFAULT
 	}
 }
 

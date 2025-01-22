@@ -6,13 +6,13 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/22 11:09:38 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/22 14:48:36 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libs.h"
 
-// char *ft_gettoken(char  *input, int delim, bool fst) //  melhor usar o split
+// char *ft_gettoken(char  *input, int delim, bool fst)
 // {
 // 	static  char    *static_str = NULL;
 // 	char    *token;
@@ -38,6 +38,43 @@
 // 	return (ft_strdup(token));
 // }
 
+char *ft_gettoken(char *input, int delim, bool fst)
+{
+    static char *static_str = NULL;
+    char *token;
+    char quote = '\0';
+
+    if (static_str == NULL && fst)
+        static_str = input;
+    if (static_str == NULL)
+        return (NULL);
+    while (*static_str && *static_str == delim)
+        static_str++;
+    if (*static_str == '\0')
+        return (NULL);
+    token = static_str;
+    while (*static_str && (*static_str != delim || quote != '\0'))
+    {
+        if (*static_str == '\'' || *static_str == '\"')
+        {
+            if (quote == '\0')
+                quote = *static_str;
+            else if (quote == *static_str)
+                quote = '\0';
+        }
+        static_str++;
+    }
+    if (*static_str)
+    {
+        *static_str = '\0';
+        static_str++;
+    }
+    else
+        static_str = NULL;
+    return (ft_strdup(token));
+}
+
+
 t_tokens	*ft_addtoken(char *token)
 {
 	t_tokens	*head;
@@ -50,21 +87,19 @@ t_tokens	*ft_addtoken(char *token)
 	return (head);
 }
 
-void    ft_tokenization(t_shell *shell)
+void    ft_tokenization(t_shell **shell)
 {
 	char    *input;
-	char    **token;
-	t_tokens    *tokens;
-	int 	i;
+	char    *token;
+	t_tokens    *t_tokens;
 
-	i = 0;
-	tokens = NULL;
-	input = shell->input;
-	token = ft_split(input, ' ');
-	while (token[i] != NULL)
+	t_tokens = (*shell)->tokens;
+    input = (*shell)->input;
+	token = ft_gettoken(input, ' ', true);
+	while (token != NULL)
 	{
-		tokens = ft_addtoken(token[i]);
-		i++;
-		printf("struct token:%s\n", tokens->content);
+		t_tokens = ft_addtoken(token);
+		token = ft_gettoken(input, ' ', false);
+		printf("struct token:%s\n", t_tokens->content);
 	}
 }
