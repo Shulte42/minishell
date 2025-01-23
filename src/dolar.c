@@ -7,6 +7,11 @@ char	*extract_var_name(char *input, int *index)
 
 	start = *index + 1;
 	len = 0;
+	if (input[start] == '?')
+	{
+		*index += 2;
+		return (ft_strdup("?"));
+	}
 	while (ft_isalnum(input[start + len]) || input[start + len] == '_')
 		len++;
 	var_name = ft_strndup(input + start, len);
