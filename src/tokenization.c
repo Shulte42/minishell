@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/22 14:48:36 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:06:27 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,19 @@ t_tokens	*ft_addtoken(char *token)
 	return (head);
 }
 
-void    ft_tokenization(t_shell **shell)
+void    ft_tokenization(t_shell *shell)
 {
 	char    *input;
 	char    *token;
-	t_tokens    *t_tokens;
+	t_shell    *t_tokens;
 
-	t_tokens = (*shell)->tokens;
-    input = (*shell)->input;
+	t_tokens = shell;
+    input = shell->input;
 	token = ft_gettoken(input, ' ', true);
 	while (token != NULL)
 	{
-		t_tokens = ft_addtoken(token);
+		t_tokens->tokens = ft_addtoken(token);
 		token = ft_gettoken(input, ' ', false);
-		printf("struct token:%s\n", t_tokens->content);
+		printf("struct token:%s\n", t_tokens->tokens->content);
 	}
 }

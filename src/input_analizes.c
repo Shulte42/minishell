@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:18:15 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/22 14:52:29 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/24 16:07:52 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,24 @@ int	ft_c_piperedir(char	*str)
 	}
 	return (count);
 }
+
+// static void add_space_around_piperedir(char	*input, char *input_spaced, int *i, int *z)
+// {
+// 	if (ft_inside_quotes(input, *i) == 0 && ft_check_piperedir(input[*i]))
+	// {
+	// 	input_spaced[(*z)++] = ' ';
+	// 	input_spaced[*z] = input[*i];
+	// 	if (input[*i + 1] == input[*i])
+	// 	{
+	// 		input_spaced[++(*z)] = input[++(*i)];
+	// 		input_spaced[++(*z)] = ' ';
+	// 	}
+	// 	else if (input[*i + 1] != input[(*i)] && input[*i + 1])
+	// 		input_spaced[++(*i)] = ' ';
+	// }
+	// else
+	// 	input_spaced[*z] = input[*i];
+// }
 
 void    ft_space_piperedir(t_shell  *shell)
 {
@@ -75,9 +93,9 @@ void    ft_parsing_loop(t_shell *shell)
 	{
 		shell->input = expand_envvar(shell, shell->input);
 		ft_space_piperedir(shell);
-		ft_quote_handle(shell);
-		ft_tokenization(&shell);
-		// printf("token:%s\n", shell->tokens->content);//SEGFAULT
+		// ft_quote_handle(shell);
+		ft_tokenization(shell);
+		printf("token:%s\n", shell->tokens->content);//SEGFAULTexit
 	}
 }
 
