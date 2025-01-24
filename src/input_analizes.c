@@ -87,6 +87,23 @@ void    ft_space_piperedir(t_shell  *shell)
 	printf("input spaced:%s\n", shell->input);
 }
 
+/* funcao simples para verificar a lista de tokens */
+
+void	print_token_lst(t_tokens *lst)
+{
+	t_tokens	*current;
+	int			i;
+
+	current = lst;
+	i = 1;
+	while(current)
+	{
+		printf("Token %d : %s\n", i, current->content);
+		i++;
+		current = current->next;
+	}
+}
+
 void    ft_parsing_loop(t_shell *shell)
 {
 	if (ft_quote_checker(shell->input))  
@@ -95,7 +112,8 @@ void    ft_parsing_loop(t_shell *shell)
 		ft_space_piperedir(shell);
 		// ft_quote_handle(shell);
 		ft_tokenization(shell);
-		printf("token:%s\n", shell->tokens->content);//SEGFAULTexit
+		print_token_lst(shell->tokens);/* chamada para funcao que verifica a lista */
+		// printf("token:%s\n", shell->tokens->content);//SEGFAULTexit
 	}
 }
 

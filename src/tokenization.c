@@ -87,19 +87,47 @@ t_tokens	*ft_addtoken(char *token)
 	return (head);
 }
 
+/* sua versao comentada */
+
+// void    ft_tokenization(t_shell *shell)
+// {
+// 	char    *input;
+// 	char    *token;
+// 	t_shell    *t_tokens;
+
+// 	t_tokens = shell;
+//     input = shell->input;
+// 	token = ft_gettoken(input, ' ', true);
+// 	while (token != NULL)
+// 	{
+// 		t_tokens->tokens = ft_addtoken(token);
+// 		token = ft_gettoken(input, ' ', false);
+// 		printf("struct token:%s\n", t_tokens->tokens->content);
+// 	}
+// }
+
+/* nessa versao nao precisa da funcao ft_addtoken */
 void    ft_tokenization(t_shell *shell)
 {
-	char    *input;
-	char    *token;
-	t_shell    *t_tokens;
+	char        *input;
+	char        *token;
+	t_tokens    *node; // temp para armazenar o token atual
+    t_tokens    *head; // cabeca da lista
 
-	t_tokens = shell;
     input = shell->input;
 	token = ft_gettoken(input, ' ', true);
+    head = NULL;
+    node = NULL;
 	while (token != NULL)
 	{
-		t_tokens->tokens = ft_addtoken(token);
+		node = ft_calloc(1, sizeof(t_tokens));
+        node->content = token;
+        /* abaixo so inicializo os valores */
+        node->type = -1;
+        node->single_qoutes = false;
+        node->double_quotes = false;
+        ft_tokenadd_back(&head, node); // adiciona o token atual ao fim da lista
 		token = ft_gettoken(input, ' ', false);
-		printf("struct token:%s\n", t_tokens->tokens->content);
 	}
+    shell->tokens = head; // ponteiro tokens recebe a cabeca da lista
 }
