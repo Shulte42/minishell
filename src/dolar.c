@@ -1,4 +1,5 @@
 #include "../inc/libs.h"
+
 char	*extract_var_name(char *input, int *index)
 {
 	char	*var_name;
