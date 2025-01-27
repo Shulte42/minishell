@@ -50,8 +50,10 @@ typedef enum	e_builtins
 
 typedef struct				tokens_struct
 {
-	char					*token;
+	char					*content;
 	int						type;
+	bool					double_quotes;
+	bool					single_qoutes;
 	struct tokens_struct	*next;
 	struct tokens_struct	*prev;
 }							t_tokens;

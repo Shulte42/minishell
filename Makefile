@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= mini
+NAME	= minishell
 CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -g
 RM		= rm -f
@@ -49,9 +49,10 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)teste.c \
 			$(SRC_DIR)unset.c \
 			$(SRC_DIR)utils.c \
-			$(SRC_DIR)clear.c \
 			$(SRC_DIR)input_analizes.c \
 			$(SRC_DIR)quote_checker.c \
+			$(SRC_DIR)quote_handle.c \
+			$(SRC_DIR)split_token.c \
 			$(SRC_DIR)tokenization.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
