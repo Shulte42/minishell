@@ -1,16 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/18 17:37:50 by ncampbel          #+#    #+#              #
-#    Updated: 2025/01/16 13:27:44 by luiz-dos         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-NAME	= mini
+NAME	= minishell
 CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -g
 RM		= rm -f
@@ -49,9 +37,10 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)teste.c \
 			$(SRC_DIR)unset.c \
 			$(SRC_DIR)utils.c \
-			$(SRC_DIR)clear.c \
 			$(SRC_DIR)input_analizes.c \
 			$(SRC_DIR)quote_checker.c \
+			$(SRC_DIR)quote_handle.c \
+			$(SRC_DIR)split_token.c \
 			$(SRC_DIR)tokenization.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)

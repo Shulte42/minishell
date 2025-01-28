@@ -15,14 +15,19 @@
 
 #include "structs.h"
 
+/* tokens */
 void	ft_input_analizes(t_shell *data);
 bool	ft_quote_checker(char *input);
 char	*ft_gettoken(char  *input, int delim, bool fst);
 void	ft_tokenization(t_shell *data);
-void	ft_clean_exit(t_shell *minishell);
+int		ft_inside_quotes(char	*str, int index);
+bool	ft_check_piperedir(char	c);
+int		ft_c_piperedir(char	*str);
+void	ft_space_piperedir(t_shell  *shell);
+void    ft_set_token_type(t_tokens *tokens);
 
 /* execute commands */
-void	commands(t_shell *data, char **args);
+void	commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **env_var);
 char	**envvar_array(t_var *lst);
@@ -55,11 +60,11 @@ void	print_export(t_shell *data);
 void	sort_var(t_var *lst);
 void	swap_nodes(t_var *current, t_var *next);
 t_var	*create_lst_export(t_shell *data);
-t_var	*copy_var_node(t_var *envvar);
+t_var   *copy_var_node(t_var *envvar);
 
 /* dolar */
 char	*expand_envvar(t_shell *data, char *input);
-void	expand_envvar_two(char *expanded, char *var_value, int *j);
+void	expand_envvar_two(char *expanded, char *var_name, char *var_value, int *j);
 char	*extract_var_name(char *input, int *index);
 /* unset */
 void	unset(t_shell *data, char **args);
@@ -90,6 +95,9 @@ void	set_questionvar(t_shell *data);
 /* free*/
 void	free_array(char **array);
 void	free_lst(t_var *lst);
+void	ft_tokenclear(t_tokens *lst);
 void	free_exit(t_shell *data);
+
+int     ainput(t_shell *data);
 
 #endif /* FUNCTIONS_H */

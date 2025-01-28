@@ -66,6 +66,7 @@ static int input_cleaner(char *input)
 	free(trim);
 	return (0);
 }
+
 static int match_quotes(const char *input)
 {
 	char c;
@@ -84,7 +85,6 @@ static int match_quotes(const char *input)
 	}
 	return (c);
 }
-
 
 bool ft_quote_checker(char *input)
 {
