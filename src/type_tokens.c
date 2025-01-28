@@ -19,10 +19,9 @@ void    ft_set_token_type(t_tokens *tokens)
 	node = tokens;
 	while (node->next)
 	{
-
-		if (ft_builtins(&node) == 0)
-		{
-			exec_builtins(node);
-		}
+		// if (ft_builtins(&node) == 0)
+		// {
+		// 	exec_builtins(node);
+		// }
 	}
 }

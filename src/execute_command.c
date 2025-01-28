@@ -79,16 +79,16 @@ void	execute_command(char **cmd, char **env_var)
 	char	*command_path;
 
 	if (!cmd[0] || only_space(cmd[0]) || check_envp(env_var))
-		return ;
+		exit(1);
 	command_path = get_command_path(cmd[0], env_var);
 	if (!command_path)
 	{
 		printf("-minishell: %s: command not found\n", cmd[0]);
-		return ;
+		exit(127);
 	}
 	execve(command_path, cmd, env_var);
 	free_array(cmd);
 	free(command_path);
 	perror("execve");
-	return ;
+	exit(1);
 }

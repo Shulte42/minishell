@@ -101,14 +101,14 @@ void	print_token_lst(t_tokens *lst)
 	}
 }
 
-void    ft_parsing_loop(t_shell *shell)
+void    ft_parsing_loop(t_shell *data)
 {
-	if (ft_quote_checker(shell->input))  
+	if (ft_quote_checker(data->input))  
 	{
-		shell->input = expand_envvar(shell, shell->input);
-		ft_space_piperedir(shell);
-		ft_tokenization(shell);
-		print_token_lst(shell->tokens);
+		data->input = expand_envvar(data, data->input);
+		ft_space_piperedir(data);
+		ft_tokenization(data);
+		print_token_lst(data->tokens);
 	}
 }
 

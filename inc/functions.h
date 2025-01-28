@@ -14,6 +14,7 @@
 # define FUNCTIONS_H
 
 #include "structs.h"
+#include "libs.h"
 
 /* tokens */
 void	ft_input_analizes(t_shell *data);

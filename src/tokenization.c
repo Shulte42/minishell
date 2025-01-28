@@ -12,6 +12,11 @@
 
 #include "../inc/libs.h"
 
+/* 
+ * essa funcao esta modificando o input
+ * o input sendo "ls -l" 
+ * quando passa por ela passa a ser "ls"
+*/
 char *ft_gettoken(char *input, int delim, bool fst)
 {
 	static char *static_str = NULL;
@@ -60,7 +65,7 @@ void ft_tokenization(t_shell *data)
     token = ft_gettoken(input, ' ', true);
     head = NULL;
     node = NULL;
-    while (token != NULL)
+	while (token != NULL)
     {
         node = ft_calloc(1, sizeof(t_tokens));
         node->content = token;
