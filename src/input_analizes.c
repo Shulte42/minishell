@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:18:15 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/24 16:07:52 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:15:44 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void    ft_space_piperedir(t_shell  *shell)
 	input_spaced[z] = '\0';
 	free(shell->input);
 	shell->input = input_spaced;
-	printf("input spaced:%s\n", shell->input);
 }
 
 /* funcao simples para verificar a lista de tokens */

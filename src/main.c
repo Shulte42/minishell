@@ -31,7 +31,6 @@ bool    ft_get_input(t_shell *shell)
 
 static void loop_those_shells(t_shell *minishell)
 {
-	printf("kaka\n");
 	while (1)
 	{
 		if(ft_get_input(minishell))
@@ -42,7 +41,7 @@ static void loop_those_shells(t_shell *minishell)
 				break;
 			}
 			ft_input_analizes(minishell);
-			// ft_type_tokens(minishell);
+			ft_type_tokens(minishell);
 		}
 	}
 }

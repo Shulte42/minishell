@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/21 15:16:45 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:29:09 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ typedef struct builtins_struct
 	
 }   t_builtins;
 
-typedef enum	e_builtins
+enum	e_builtins
 {
-	B_ECHO,
-	CD,
-	PWD,
-	EXPORT,
-	UNSET,
-	ENV,
-	EXIT,
-}				t_enum;
+	CMD,
+	ARG,
+	REDIR_OUT, //>
+	APPEND_OUT, //>>
+	REDIR_IN, // <
+	HEREDOC, // <<
+	PIPE
+};
 
 typedef struct				tokens_struct
 {
