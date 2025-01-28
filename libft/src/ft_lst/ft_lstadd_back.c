@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 14:59:46 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/28 13:58:37 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/14 14:42:07 by luiz-dos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ void	ft_tokenadd_back(t_tokens **lst, t_tokens *new)
 	}
 	curr = ft_tokenlast(*lst);
 	curr->next = new;
-	new->prev = curr;
 }

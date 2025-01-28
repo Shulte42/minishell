@@ -39,3 +39,4 @@ t_var	*create_lst_envvar(char **envp)
 	}
 	return (head);
 }
+

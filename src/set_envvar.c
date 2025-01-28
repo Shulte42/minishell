@@ -26,6 +26,7 @@ void    update_envvar(t_var *envvar, char *name, char *value)
 void    add_new_envvar(t_var *lst, char *name, char *value, int flag)
 {
     t_var   *envvar;
+    // t_var   *copy;
 
     envvar = ft_calloc(1, sizeof(t_var));
     if (!envvar)
@@ -36,7 +37,7 @@ void    add_new_envvar(t_var *lst, char *name, char *value, int flag)
         free (envvar);
         return ;
     }
-    if (flag)
+    if (flag == 1)
     {
         envvar->env = true;
         envvar->exp = true;
@@ -66,3 +67,4 @@ void    set_envvar(t_shell *data, char *name, char *value, int flag)
         add_new_envvar(data->envvar_export, name, value, flag);
     }
 }
+

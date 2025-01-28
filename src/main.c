@@ -6,25 +6,24 @@ t_shell *ft_start_shell(void)
 	return (&shell);
 }
 
-bool    ft_get_input(t_shell *data)
+bool    ft_get_input(t_shell *shell)
 {
 	char	*input;
 	char	*pwd;
 	
 	pwd = color_to_prompt(get_pathname());
 	input = readline(pwd);
-	free(pwd);
 	if (input == NULL)
 		return (false); //todo: lidar com crtl D
-	if (input[0] == 0 || only_space(input))
+	if (input[0] == 0)
 	{
-		free(input);
 		return (false);
+		free(input);
 	}
 	if (input)
 	{
 		add_history(input);
-		data->input = ft_strdup(input);
+		shell->input = ft_strdup(input);
 		free(input);
 	}
 	return (true);
@@ -42,36 +41,26 @@ int	ainput(t_shell *data)
 	else if (ft_strcmp(input[0], "export") == 0)
 		print_export(data);
 	else if (ft_strcmp(input[0], "exit") == 0)
-	{
-		free_array(input);
-		free_exit(data);
 		return (1);
-	}
-	else if (ft_strcmp(input[0], "cd") == 0)
-		cd(data, input);
-	else if (ft_strcmp(input[0], "unset") == 0)
-		unset(data, input);
-	else if (ft_strcmp(input[0], "pwd") == 0)
-		mini_pwd(data);
-	else if (ft_strcmp(input[0], "echo") == 0)
-		mini_echo(input, 1);
 	else
 		commands(data, input);
-	free_array(input);
 	return (0);
 }
 
-static void loop_those_shells(t_shell *data)
+static void loop_those_shells(t_shell *minishell)
 {
 	while (1)
 	{
-		if(ft_get_input(data))
+		if(ft_get_input(minishell))
 		{
-			ft_input_analizes(data);
-			if (ainput(data))
+			if (ainput(minishell))
 				break ;
-			ft_tokenclear(data->tokens);
-			free(data->input);
+			// if (ft_strncmp(minishell->input, "exit", ft_strlen(minishell->input)) == 0)
+			// {
+			// 	ft_clean_exit(minishell);
+			// 	break;
+			// }
+			// ft_input_analizes(minishell);
 		}
 	}
 }
@@ -90,8 +79,10 @@ int main(int ac, char **av, char **envp)
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
+	sort_var(data->envvar);
 	set_shlvl(data);
 	set_questionvar(data);
 	loop_those_shells(data);
+	free_exit(data);
 	return (0);
 }

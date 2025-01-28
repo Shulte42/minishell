@@ -1,7 +1,0 @@
-///to fix
-exit so funciona sozinho
-mudar gettoken para um split e 
-mudar addtoken para trabalhar com array de token ao inves de token separados
-/* verificar se tem argumentos, se tiver, exibir messagem de erro */
-////
-
