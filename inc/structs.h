@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 14:00:39 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 16:12:21 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct builtins_struct
 	
 }   t_builtins;
 
-enum	e_builtins
+enum	e_types
 {
 	CMD,
 	ARG,
@@ -71,6 +71,5 @@ typedef struct s_shell
 	struct	s_shell	*next;
 	struct	s_shell	*prev;
 }  				t_shell;
-
 
 #endif
