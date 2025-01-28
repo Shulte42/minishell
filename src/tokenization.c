@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/28 14:04:11 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 15:19:42 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,6 @@ char *ft_gettoken(char *input, int delim, bool fst)
     else
         static_str = NULL;
     return (ft_strdup(token));
-}
-
-t_tokens *ft_addtoken(char *token)
-{
-    t_tokens *head;
-    t_tokens *new_node;
-
-    head = NULL;
-    new_node = ft_calloc(1, sizeof(t_tokens));
-    new_node->content = token;
-    ft_tokenadd_back(&head, new_node);
-    return (head);
 }
 
 /* nessa versao nao precisa da funcao ft_addtoken */

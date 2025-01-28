@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 13:58:03 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 15:56:48 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,13 @@ void    ft_input_analizes(t_shell *data);
 bool    ft_quote_checker(char *input);
 char    *ft_gettoken(char  *input, int delim, bool fst);
 void    ft_tokenization(t_shell *data);
-void    ft_clean_exit(t_shell *minishell);
-void    ft_type_tokens(t_shell *tokens);
-void    ft_quote_handle(t_shell *shell);
 int	ft_inside_quotes(char	*str, int index);
-bool	ft_check_piperedir(char	c);
-int	ft_c_piperedir(char	*str);
-void    ft_space_piperedir(t_shell  *shell);
+int		ft_c_piperedir(char	*str);
+void	ft_space_piperedir(t_shell  *shell);
 void    ft_type_tokens(t_shell *tokens);
-void	ft_free_array(char	**array);
 
 /* execute commands */
-void	commands(t_shell	*data, char **args, char **envp);
+void	commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **env_var);
 char	**envvar_array(t_var *lst);
@@ -68,7 +63,7 @@ t_var   *copy_var_node(t_var *envvar);
 
 /* dolar */
 char	*expand_envvar(t_shell *data, char *input);
-void	expand_envvar_two(char *expanded, char *var_value, int *j);
+void	expand_envvar_two(char *expanded, char *var_name, char *var_value, int *j);
 char	*extract_var_name(char *input, int *index);
 /* unset */
 void	unset(t_shell *data, char **args);
@@ -97,6 +92,9 @@ char    *create_envvar_content(char *name, char *value);
 /* free*/
 void	free_array(char **array);
 void	free_lst(t_var *lst);
+void    ft_tokenclear(t_tokens *lst);
 void	free_exit(t_shell *data);
+
+int ainput(t_shell *data);
 
 #endif /* FUNCTIONS_H */

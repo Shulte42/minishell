@@ -34,10 +34,10 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)pwd.c \
 			$(SRC_DIR)redirection.c \
 			$(SRC_DIR)set_envvar.c \
+			$(SRC_DIR)set_envvar2.c \
 			$(SRC_DIR)teste.c \
 			$(SRC_DIR)unset.c \
 			$(SRC_DIR)utils.c \
-			$(SRC_DIR)clear.c \
 			$(SRC_DIR)input_analizes.c \
 			$(SRC_DIR)quote_checker.c \
 			$(SRC_DIR)quote_handle.c \

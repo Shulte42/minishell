@@ -1,4 +1,5 @@
 #include "../inc/libs.h"
+
 char	**envvar_array(t_var *lst)
 {
 	t_var	*temp;
@@ -28,12 +29,11 @@ char	**envvar_array(t_var *lst)
 	return (env_var);
 }
 
-void	commands(t_shell	*data, char **args, char **envp)
+void	commands(t_shell	*data, char **args)
 {
 	pid_t	pid;
 	char	**env_var;
 
-	(void)envp;
 	env_var = NULL;
 	pid = fork();
 	if (pid == 0)

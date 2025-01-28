@@ -2,8 +2,6 @@
 
 bool	check_options(char *option)
 {
-	// char	*arg;
-
 	if (option[0] == '-')
 	{
 	   printf("-minishell: %s : invalid option\n", option);

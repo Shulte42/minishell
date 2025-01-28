@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:18:15 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 14:00:27 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 15:33:35 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ void    ft_space_piperedir(t_shell  *shell)
 	shell->input = input_spaced;
 }
 
-/* funcao simples para verificar a lista de tokens */
-
 void	print_token_lst(t_tokens *lst)
 {
 	t_tokens	*current;
@@ -109,10 +107,8 @@ void    ft_parsing_loop(t_shell *shell)
 	{
 		shell->input = expand_envvar(shell, shell->input);
 		ft_space_piperedir(shell);
-		// ft_quote_handle(shell);
 		ft_tokenization(shell);
 		print_token_lst(shell->tokens);/* chamada para funcao que verifica a lista */
-		// printf("token:%s\n", shell->tokens->content);//SEGFAULTexit
 	}
 }
 

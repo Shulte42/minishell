@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:32:57 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 14:00:09 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 15:25:20 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int input_cleaner(char *input)
 	free(trim);
 	return (0);
 }
+
 static int match_quotes(const char *input)
 {
 	char c;
@@ -84,7 +85,6 @@ static int match_quotes(const char *input)
 	}
 	return (c);
 }
-
 
 bool ft_quote_checker(char *input)
 {
