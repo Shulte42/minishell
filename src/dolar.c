@@ -37,7 +37,7 @@ char	*expand_envvar(t_shell *data, char *input)
 	j = 0;
 	while (input[i])
 	{
-		if (input[i] == '$' &&  ft_inside_quotes(input, i) != 1)
+		if (input[i] == '$')
 		{
 			var_name = extract_var_name(input, &i);
 			var_value = get_value(data, var_name);
