@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:22 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/28 13:59:25 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/28 14:04:11 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,34 +48,33 @@ char *ft_gettoken(char *input, int delim, bool fst)
     return (ft_strdup(token));
 }
 
-
-t_tokens	*ft_addtoken(char *token)
+t_tokens *ft_addtoken(char *token)
 {
-	t_tokens	*head;
-	t_tokens	*new_node;
+    t_tokens *head;
+    t_tokens *new_node;
 
-	head = NULL;
-	new_node = ft_calloc(1, sizeof(t_tokens));
-	new_node->content = token;
-	ft_tokenadd_back(&head, new_node);
-	return (head);
+    head = NULL;
+    new_node = ft_calloc(1, sizeof(t_tokens));
+    new_node->content = token;
+    ft_tokenadd_back(&head, new_node);
+    return (head);
 }
 
 /* nessa versao nao precisa da funcao ft_addtoken */
-void    ft_tokenization(t_shell *data)
+void ft_tokenization(t_shell *data)
 {
-	char        *input;
-	char        *token;
-	t_tokens    *node; // temp para armazenar o token atual
-    t_tokens    *head; // cabeca da lista
+    char *input;
+    char *token;
+    t_tokens *node; // temp para armazenar o token atual
+    t_tokens *head; // cabeca da lista
 
     input = data->input;
-	token = ft_gettoken(input, ' ', true);
+    token = ft_gettoken(input, ' ', true);
     head = NULL;
     node = NULL;
-	while (token != NULL)
-	{
-		node = ft_calloc(1, sizeof(t_tokens));
+    while (token != NULL)
+    {
+        node = ft_calloc(1, sizeof(t_tokens));
         node->content = token;
         /* abaixo so inicializo os valores */
         node->type = -1;
@@ -83,7 +82,7 @@ void    ft_tokenization(t_shell *data)
         node->double_quotes = false;
         ft_set_token_type(node);
         ft_tokenadd_back(&head, node); // adiciona o token atual ao fim da lista
-		token = ft_gettoken(input, ' ', false);
-	}
+        token = ft_gettoken(input, ' ', false);
+    }
     data->tokens = head; // ponteiro tokens recebe a cabeca da lista
 }
