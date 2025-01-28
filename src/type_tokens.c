@@ -10,28 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/libs.h"
+#include "../inc/libs.h"
 
-// void    ft_type_tokens(t_shell *tokens)
-// {
-// 	t_shell	*node;
-
-// 	node = tokens;
-// 	while (node->next)
-// 	{
-// 		if(ft_builtins(&node) == 0)
-// 		{
-// 			exec_builtins(node);
-// 		}
-// 	}
-// }
-
-int	ft_builtins(t_shell	*tokens_node)
+void    ft_set_token_type(t_tokens *tokens)
 {
-	if (ft_strcmp(tokens_node->tokens->content, "pwd") == 0)
+	t_tokens	*node;
+
+	node = tokens;
+	while (node->next)
 	{
-		mini_pwd(tokens_node);
-		return (0);
+
+		if (ft_builtins(&node) == 0)
+		{
+			exec_builtins(node);
+		}
 	}
-	
 }

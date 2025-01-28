@@ -20,14 +20,11 @@ void	ft_input_analizes(t_shell *data);
 bool	ft_quote_checker(char *input);
 char	*ft_gettoken(char  *input, int delim, bool fst);
 void	ft_tokenization(t_shell *data);
-void	ft_clean_exit(t_shell *minishell);
-void	ft_type_tokens(t_shell *tokens);
-void	ft_quote_handle(t_shell *shell);
 int		ft_inside_quotes(char	*str, int index);
 bool	ft_check_piperedir(char	c);
 int		ft_c_piperedir(char	*str);
 void	ft_space_piperedir(t_shell  *shell);
-void	ft_type_tokens(t_shell *tokens);
+void    ft_set_token_type(t_tokens *tokens);
 
 /* execute commands */
 void	commands(t_shell	*data, char **args);

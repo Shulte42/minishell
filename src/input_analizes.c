@@ -84,7 +84,6 @@ void    ft_space_piperedir(t_shell  *shell)
 	input_spaced[z] = '\0';
 	free(shell->input);
 	shell->input = input_spaced;
-	printf("input spaced:%s\n", shell->input);
 }
 
 void	print_token_lst(t_tokens *lst)
@@ -108,7 +107,6 @@ void    ft_parsing_loop(t_shell *shell)
 	{
 		shell->input = expand_envvar(shell, shell->input);
 		ft_space_piperedir(shell);
-		// ft_quote_handle(shell);
 		ft_tokenization(shell);
 		print_token_lst(shell->tokens);
 	}

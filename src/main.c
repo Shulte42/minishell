@@ -6,7 +6,7 @@ t_shell *ft_start_shell(void)
 	return (&shell);
 }
 
-bool    ft_get_input(t_shell *shell)
+bool    ft_get_input(t_shell *data)
 {
 	char	*input;
 	char	*pwd;
@@ -24,7 +24,7 @@ bool    ft_get_input(t_shell *shell)
 	if (input)
 	{
 		add_history(input);
-		shell->input = ft_strdup(input);
+		data->input = ft_strdup(input);
 		free(input);
 	}
 	return (true);
@@ -61,17 +61,17 @@ int	ainput(t_shell *data)
 	return (0);
 }
 
-static void loop_those_shells(t_shell *minishell)
+static void loop_those_shells(t_shell *data)
 {
 	while (1)
 	{
-		if(ft_get_input(minishell))
+		if(ft_get_input(data))
 		{
-			ft_input_analizes(minishell);
-			if (ainput(minishell))
+			ft_input_analizes(data);
+			if (ainput(data))
 				break ;
-			ft_tokenclear(minishell->tokens);
-			free(minishell->input);
+			ft_tokenclear(data->tokens);
+			free(data->input);
 		}
 	}
 }

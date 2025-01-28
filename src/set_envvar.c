@@ -66,4 +66,3 @@ void    set_envvar(t_shell *data, char *name, char *value, int flag)
         add_new_envvar(data->envvar_export, name, value, flag);
     }
 }
-
