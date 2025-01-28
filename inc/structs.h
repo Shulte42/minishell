@@ -39,12 +39,12 @@ typedef struct builtins_struct
 
 enum e_types
 {
-	COMMAND,
+	CMD,
 	ARG,
-	REDIR_OUT,
-	APPEND_OUT,
-	REDIR_IN,
-	HEREDOC,
+	REDIR_OUT, // >
+	APPEND_OUT, // >>
+	REDIR_IN, // <
+	HEREDOC, // <<
 	PIPE
 };
 
@@ -71,6 +71,5 @@ typedef struct s_shell
 	struct	s_shell	*next;
 	struct	s_shell	*prev;
 }  				t_shell;
-
 
 #endif
