@@ -37,16 +37,16 @@ typedef struct builtins_struct
 	
 }   t_builtins;
 
-typedef enum	e_builtins
+enum e_types
 {
-	B_ECHO,
-	CD,
-	PWD,
-	EXPORT,
-	UNSET,
-	ENV,
-	EXIT
-}				t_enum;
+	COMMAND,
+	ARG,
+	REDIR_OUT,
+	APPEND_OUT,
+	REDIR_IN,
+	HEREDOC,
+	PIPE
+};
 
 typedef struct				tokens_struct
 {

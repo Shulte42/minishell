@@ -41,6 +41,7 @@ void	ft_envadd_back(t_var **lst, t_var *new)
 	}
 	curr = ft_envlast(*lst);
 	curr->next = new;
+	new->prev = curr;
 }
 
 void	ft_tokenadd_back(t_tokens **lst, t_tokens *new)
@@ -56,4 +57,5 @@ void	ft_tokenadd_back(t_tokens **lst, t_tokens *new)
 	}
 	curr = ft_tokenlast(*lst);
 	curr->next = new;
+	new->prev = curr;
 }
