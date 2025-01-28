@@ -41,7 +41,8 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)quote_checker.c \
 			$(SRC_DIR)quote_handle.c \
 			$(SRC_DIR)split_token.c \
-			$(SRC_DIR)tokenization.c
+			$(SRC_DIR)tokenization.c \
+			$(SRC_DIR)type_tokens.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
