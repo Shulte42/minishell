@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 13:58:03 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/16 13:29:23 by luiz-dos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,14 @@
 
 #include "structs.h"
 
-/* tokens */
-void    ft_input_analizes(t_shell *data);
-bool    ft_quote_checker(char *input);
-char    *ft_gettoken(char  *input, int delim, bool fst);
-void    ft_tokenization(t_shell *data);
-void    ft_clean_exit(t_shell *minishell);
-void    ft_type_tokens(t_shell *tokens);
-void    ft_quote_handle(t_shell *shell);
-int	ft_inside_quotes(char	*str, int index);
-bool	ft_check_piperedir(char	c);
-int	ft_c_piperedir(char	*str);
-void    ft_space_piperedir(t_shell  *shell);
-void    ft_type_tokens(t_shell *tokens);
-void	ft_free_array(char	**array);
+void	ft_input_analizes(t_shell *data);
+bool	ft_quote_checker(char *input);
+char	*ft_gettoken(char  *input, int delim, bool fst);
+void	ft_tokenization(t_shell *data);
+void	ft_clean_exit(t_shell *minishell);
 
 /* execute commands */
-void	commands(t_shell	*data, char **args, char **envp);
+void	commands(t_shell *data, char **args);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **env_var);
 char	**envvar_array(t_var *lst);
@@ -64,7 +55,7 @@ void	print_export(t_shell *data);
 void	sort_var(t_var *lst);
 void	swap_nodes(t_var *current, t_var *next);
 t_var	*create_lst_export(t_shell *data);
-t_var   *copy_var_node(t_var *envvar);
+t_var	*copy_var_node(t_var *envvar);
 
 /* dolar */
 char	*expand_envvar(t_shell *data, char *input);
@@ -89,10 +80,12 @@ char	*get_value(t_shell *data, char *name);
 char	*get_pathname(void);
 
 /* set env*/
-void    set_envvar(t_shell *data, char *name, char *value, int flag);
-void    add_new_envvar(t_var *lst, char *name, char *value, int flag);
-void    update_envvar(t_var *envvar, char *name, char *value);
-char    *create_envvar_content(char *name, char *value);
+void	set_envvar(t_shell *data, char *name, char *value, int flag);
+void	add_new_envvar(t_var *lst, char *name, char *value, int flag);
+void	update_envvar(t_var *envvar, char *name, char *value);
+char	*create_envvar_content(char *name, char *value);
+void	set_shlvl(t_shell *data);
+void	set_questionvar(t_shell *data);
 
 /* free*/
 void	free_array(char **array);

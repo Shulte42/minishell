@@ -29,19 +29,38 @@ bool    ft_get_input(t_shell *shell)
 	return (true);
 }
 
+int	ainput(t_shell *data)
+{
+	char	**input;
+
+	input = ft_split(data->input, ' ');
+	if (!input)
+		return (1);
+	if (ft_strcmp(input[0], "env") == 0)
+		mini_env(data->envvar);
+	else if (ft_strcmp(input[0], "export") == 0)
+		print_export(data);
+	else if (ft_strcmp(input[0], "exit") == 0)
+		return (1);
+	else
+		commands(data, input);
+	return (0);
+}
+
 static void loop_those_shells(t_shell *minishell)
 {
 	while (1)
 	{
 		if(ft_get_input(minishell))
 		{
-			if (ft_strncmp(minishell->input, "exit", ft_strlen(minishell->input)) == 0)
-			{
-				ft_clean_exit(minishell);
-				break;
-			}
-			ft_input_analizes(minishell);
-			ft_type_tokens(minishell);
+			if (ainput(minishell))
+				break ;
+			// if (ft_strncmp(minishell->input, "exit", ft_strlen(minishell->input)) == 0)
+			// {
+			// 	ft_clean_exit(minishell);
+			// 	break;
+			// }
+			// ft_input_analizes(minishell);
 		}
 	}
 }
@@ -60,8 +79,10 @@ int main(int ac, char **av, char **envp)
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
-	// setar SHLVL
+	sort_var(data->envvar);
+	set_shlvl(data);
+	set_questionvar(data);
 	loop_those_shells(data);
-	
+	free_exit(data);
 	return (0);
 }

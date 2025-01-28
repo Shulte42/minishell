@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 15:30:06 by bruda-si          #+#    #+#             */
-/*   Updated: 2025/01/28 13:58:55 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/13 15:40:46 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libs.h"
-
-void	ft_free_array(char	**array)
-{
-	int	i;
-	
-	i = 0;
-	if (array == NULL)
-		return ;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 static void    ft_tokenclear(t_tokens *lst)
 {
@@ -36,7 +21,7 @@ static void    ft_tokenclear(t_tokens *lst)
 	while (tokens != NULL)
 	{
 		next = tokens->next;
-		free(tokens->content);
+		free(tokens->token);
         free(tokens);
 		tokens = next;
 	}

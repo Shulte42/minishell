@@ -37,7 +37,7 @@ void    add_new_envvar(t_var *lst, char *name, char *value, int flag)
         free (envvar);
         return ;
     }
-    if (flag)
+    if (flag == 1)
     {
         envvar->env = true;
         envvar->exp = true;

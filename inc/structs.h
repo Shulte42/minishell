@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/28 14:00:39 by shulte           ###   ########.fr       */
+/*   Updated: 2025/01/15 11:00:31 by bruda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,21 @@ typedef struct builtins_struct
 	
 }   t_builtins;
 
-enum	e_builtins
+typedef enum	e_builtins
 {
-	CMD,
-	ARG,
-	REDIR_OUT, //>
-	APPEND_OUT, //>>
-	REDIR_IN, // <
-	HEREDOC, // <<
-	PIPE
-};
+	B_ECHO,
+	CD,
+	PWD,
+	EXPORT,
+	UNSET,
+	ENV,
+	EXIT
+}				t_enum;
 
 typedef struct				tokens_struct
 {
-	char					*content;
+	char					*token;
 	int						type;
-	bool					double_quotes;
-	bool					single_qoutes;
 	struct tokens_struct	*next;
 	struct tokens_struct	*prev;
 }							t_tokens;
