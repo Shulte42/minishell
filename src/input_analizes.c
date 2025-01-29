@@ -109,6 +109,8 @@ void    ft_parsing_loop(t_shell *data)
 		ft_space_piperedir(data);
 		ft_tokenization(data);
 		ft_set_token_type(data->tokens);
+		if (!check_tokens(data))
+			return ;
 		print_token_lst(data->tokens);
 	}
 }
