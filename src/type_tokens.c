@@ -12,16 +12,27 @@
 
 #include "../inc/libs.h"
 
-void    ft_set_token_type(t_tokens *tokens)
+void	ft_set_token_type(t_tokens *lst)
 {
-	t_tokens	*node;
+	t_tokens	*current;
 
-	node = tokens;
-	while (node->next)
+	current = lst;
+	while (current)
 	{
-		// if (ft_builtins(&node) == 0)
-		// {
-		// 	exec_builtins(node);
-		// }
+		if (ft_strcmp(current->content, ">") == 0)
+			current->type = REDIR_OUT;
+		else if (ft_strcmp(current->content, ">>") == 0)
+			current->type = APPEND_OUT;
+		else if (ft_strcmp(current->content, "<") == 0)
+			current->type = REDIR_IN;
+		else if (ft_strcmp(current->content, "<<") == 0)
+			current->type = HEREDOC;
+		else if (ft_strcmp(current->content, "|") == 0)
+			current->type = PIPE;
+		else if (!current->prev || (current->prev->type >= REDIR_OUT))
+			current->type = CMD;
+		else
+			current->type = ARG;
+		current = current->next;
 	}
 }

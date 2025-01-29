@@ -95,7 +95,7 @@ void	print_token_lst(t_tokens *lst)
 	i = 1;
 	while(current)
 	{
-		printf("Token %d : %s\n", i, current->content);
+		printf("Token %d (type: %d): %s\n", i, current->type, current->content);
 		i++;
 		current = current->next;
 	}
@@ -108,6 +108,7 @@ void    ft_parsing_loop(t_shell *data)
 		data->input = expand_envvar(data, data->input);
 		ft_space_piperedir(data);
 		ft_tokenization(data);
+		ft_set_token_type(data->tokens);
 		print_token_lst(data->tokens);
 	}
 }
