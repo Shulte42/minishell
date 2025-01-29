@@ -25,7 +25,9 @@ int		ft_inside_quotes(char	*str, int index);
 bool	ft_check_piperedir(char	c);
 int		ft_c_piperedir(char	*str);
 void	ft_space_piperedir(t_shell  *shell);
-void    ft_set_token_type(t_tokens *tokens);
+void	ft_set_token_type(t_tokens *tokens);
+int		check_tokens(t_shell *data);
+int		check_tokens_two(t_tokens *token);
 
 /* execute commands */
 void	commands(t_shell	*data, char **args);
@@ -99,6 +101,6 @@ void	free_lst(t_var *lst);
 void	ft_tokenclear(t_tokens *lst);
 void	free_exit(t_shell *data);
 
-int     ainput(t_shell *data);
+int		ainput(t_shell *data);
 
 #endif /* FUNCTIONS_H */
