@@ -54,7 +54,7 @@ char *ft_gettoken(char *input, int delim, bool fst)
 }
 
 /* nessa versao nao precisa da funcao ft_addtoken */
-void ft_tokenization(t_shell *data)
+void	ft_tokenization(t_shell *data)
 {
     char *input;
     char *token;
@@ -73,7 +73,6 @@ void ft_tokenization(t_shell *data)
         node->type = -1;
         node->single_qoutes = false;
         node->double_quotes = false;
-        ft_set_token_type(node);
         ft_tokenadd_back(&head, node); // adiciona o token atual ao fim da lista
         token = ft_gettoken(input, ' ', false);
     }
