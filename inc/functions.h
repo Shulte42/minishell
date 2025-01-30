@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luiz-dos <luiz-dos@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:56:29 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/16 13:29:23 by luiz-dos         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:29:20 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include "structs.h"
 #include "libs.h"
+
+/* signals */
+void    config_signals(void);
+void	handle_sigint(int signal);
 
 /* tokens */
 void	ft_input_analizes(t_shell *data);

@@ -87,6 +87,9 @@ int main(int ac, char **av, char **envp)
 	}
 	(void)av;
 	data = ft_start_shell();
+	// config_signals();
+	signal(SIGINT, handle_sigint);
+	// signal(SIGQUIT, SIG_IGN);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
