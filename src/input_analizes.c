@@ -86,21 +86,6 @@ void    ft_space_piperedir(t_shell  *shell)
 	shell->input = input_spaced;
 }
 
-void	print_token_lst(t_tokens *lst)
-{
-	t_tokens	*current;
-	int			i;
-
-	current = lst;
-	i = 1;
-	while(current)
-	{
-		printf("Token %d (type: %d): %s\n", i, current->type, current->content);
-		i++;
-		current = current->next;
-	}
-}
-
 void    ft_parsing_loop(t_shell *data)
 {
 	if (ft_quote_checker(data->input))  
@@ -109,8 +94,9 @@ void    ft_parsing_loop(t_shell *data)
 		ft_space_piperedir(data);
 		ft_tokenization(data);
 		ft_set_token_type(data->tokens);
-		if (!check_tokens(data))
-			return ;
+		if (check_tokens(data))
+			data->commands = create_cmd_list(data->tokens);
+		print_cmd_lst(data->commands);
 		print_token_lst(data->tokens);
 	}
 }

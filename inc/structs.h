@@ -80,6 +80,7 @@ typedef struct s_shell
 	t_args      *args;
 	t_builtins	*builtins;
 	t_tokens	*tokens;
+	t_command	*commands;
 	struct	s_shell	*next;
 	struct	s_shell	*prev;
 }  				t_shell;

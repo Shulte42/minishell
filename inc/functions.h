@@ -33,6 +33,13 @@ void	ft_set_token_type(t_tokens *tokens);
 int		check_tokens(t_shell *data);
 int		check_tokens_two(t_tokens *token);
 
+/* command list */
+t_command	*create_cmd_list(t_tokens *tokens);
+t_tokens	*handle_redir_out(t_command *cmd, t_tokens *token);
+t_tokens	*handle_redir_in(t_command *cmd, t_tokens *token);
+void        handle_argument(t_command *cmd, t_tokens *token);
+void        handle_new_command(t_command **head, t_command **current, t_tokens *token);
+
 /* execute commands */
 void	commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
@@ -105,6 +112,9 @@ void	free_lst(t_var *lst);
 void	ft_tokenclear(t_tokens *lst);
 void	free_exit(t_shell *data);
 
+/* testes */
 int		ainput(t_shell *data);
+void	print_token_lst(t_tokens *lst);
+void	print_cmd_lst(t_command *lst);
 
 #endif /* FUNCTIONS_H */

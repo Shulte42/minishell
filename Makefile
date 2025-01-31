@@ -44,7 +44,9 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)tokenization.c \
 			$(SRC_DIR)type_tokens.c \
 			$(SRC_DIR)config_signals.c \
-			$(SRC_DIR)check_tokens.c
+			$(SRC_DIR)check_tokens.c \
+			$(SRC_DIR)create_cmd_list.c \
+			$(SRC_DIR)print_lst.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

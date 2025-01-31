@@ -55,8 +55,8 @@ int	ainput(t_shell *data)
 		mini_pwd(data);
 	else if (ft_strcmp(input[0], "echo") == 0)
 		mini_echo(input, 1);
-	else
-		commands(data, input);
+	// else
+	// 	commands(data, input);
 	free_array(input);
 	return (0);
 }
