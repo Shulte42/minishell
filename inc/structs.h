@@ -37,6 +37,18 @@ typedef struct builtins_struct
 	
 }   t_builtins;
 
+typedef struct	s_command
+{
+	char				*cmd;
+	char				**args;
+	char				*infile;
+	char				*outfile;
+	char				*heredoc_delim;
+	int					append; // 1 se ">>", 0 se ">", -1 se nenhum 
+	bool				is_pipe; // true se fizer parte de um pipe
+	struct s_command	*next;
+}						t_command;
+
 enum e_types
 {
 	CMD,
@@ -48,14 +60,14 @@ enum e_types
 	PIPE
 };
 
-typedef struct				tokens_struct
+typedef struct				s_tokens
 {
 	char					*content;
 	int						type;
 	bool					double_quotes;
 	bool					single_qoutes;
-	struct tokens_struct	*next;
-	struct tokens_struct	*prev;
+	struct s_tokens	*next;
+	struct s_tokens	*prev;
 }							t_tokens;
 
 
