@@ -39,6 +39,7 @@ t_tokens	*handle_redir_out(t_command *cmd, t_tokens *token);
 t_tokens	*handle_redir_in(t_command *cmd, t_tokens *token);
 void        handle_argument(t_command *cmd, t_tokens *token);
 void        handle_new_command(t_command **head, t_command **current, t_tokens *token);
+void        clean_cmd_list(t_command *lst);
 
 /* execute commands */
 void	commands(t_shell	*data, char **args);

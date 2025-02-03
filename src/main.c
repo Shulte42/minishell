@@ -71,6 +71,7 @@ static void loop_those_shells(t_shell *data)
 			if (ainput(data))
 				break ;
 			ft_tokenclear(data->tokens);
+			clean_cmd_list(data->commands);
 			free(data->input);
 		}
 	}

@@ -86,6 +86,34 @@ void    ft_space_piperedir(t_shell  *shell)
 	shell->input = input_spaced;
 }
 
+void	clean_cmd_list(t_command *lst)
+{
+	t_command	*temp;
+	int			i;
+
+	while (lst)
+	{
+		temp = lst;
+		lst = lst->next;
+		if (temp->cmd)
+			free(temp->cmd);
+		if (temp->args)
+		{
+			i = 0;
+			while (temp->args[i])
+				free(temp->args[i++]);
+			free(temp->args);
+		}
+		if (temp->infile)
+			free(temp->infile);
+		if (temp->outfile)
+			free(temp->outfile);
+		if (temp->heredoc_delim)
+			free(temp->heredoc_delim);
+		free(temp);
+	}
+}
+
 void    ft_parsing_loop(t_shell *data)
 {
 	if (ft_quote_checker(data->input))  

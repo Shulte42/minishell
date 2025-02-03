@@ -21,15 +21,27 @@ void	handle_new_command(t_command **head, t_command **current, t_tokens *token)
 
 void	handle_argument(t_command *cmd, t_tokens *token)
 {
-	int	i;
+	int		i;
+	char	**new_args;
 
 	if (!cmd || !token)
 		return ;
 	i = 0;
 	while (cmd->args[i])
 		i++;
-	cmd->args[i] = ft_strdup(token->content);
-	cmd->args[i + 1] = NULL;
+	new_args = ft_calloc(i + 2, sizeof(char *));
+	if (!new_args)
+		return ;
+	i = 0;
+	while (cmd->args[i])
+	{
+		new_args[i] = cmd->args[i];
+		i++;
+	}
+	new_args[i] = ft_strdup(token->content);
+	new_args[i + 1] = NULL;
+	free(cmd->args);
+	cmd->args = new_args;
 }
 
 t_tokens	*handle_redir_in(t_command *cmd, t_tokens *token)
