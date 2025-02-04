@@ -45,7 +45,7 @@ typedef struct	s_command
 	char				*outfile;
 	char				*heredoc_delim;
 	int					append; // 1 se ">>", 0 se ">", -1 se nenhum 
-	bool				is_pipe; // true se fizer parte de um pipe
+	bool				has_pipe; // true se tiver um pipe
 	struct s_command	*next;
 }						t_command;
 
@@ -53,11 +53,13 @@ enum e_types
 {
 	CMD,
 	ARG,
-	REDIR_OUT, // >
-	APPEND_OUT, // >>
-	REDIR_IN, // <
+	FILENAME,
+	DELIM,
+	PIPE,
 	HEREDOC, // <<
-	PIPE
+	APPEND_OUT, // >>
+	REDIR_OUT, // >
+	REDIR_IN // <
 };
 
 typedef struct				s_tokens

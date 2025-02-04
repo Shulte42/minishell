@@ -35,7 +35,8 @@ void	handle_argument(t_command *cmd, t_tokens *token)
 	i = 0;
 	while (cmd->args[i])
 	{
-		new_args[i] = cmd->args[i];
+		new_args[i] = ft_strdup(cmd->args[i]);
+		free(cmd->args[i]);
 		i++;
 	}
 	new_args[i] = ft_strdup(token->content);
@@ -85,7 +86,7 @@ t_command	*create_cmd_list(t_tokens *tokens)
 		else if (tokens->type == REDIR_OUT || tokens->type == APPEND_OUT)
 			tokens = handle_redir_out(current_cmd, tokens);
 		else if (tokens->type == PIPE)
-			current_cmd->is_pipe = true;
+			current_cmd->has_pipe = true;
 		tokens = tokens->next;
 	}
 	return (head);

@@ -29,8 +29,12 @@ void	ft_set_token_type(t_tokens *lst)
 			current->type = HEREDOC;
 		else if (ft_strcmp(current->content, "|") == 0)
 			current->type = PIPE;
-		else if (!current->prev || (current->prev->type >= REDIR_OUT))
+		else if (!current->prev || (current->prev->type == PIPE))
 			current->type = CMD;
+		else if (current->prev->type == HEREDOC)
+			current->type = DELIM;
+		else if (current->prev->type >= APPEND_OUT)
+			current->type = FILENAME;
 		else
 			current->type = ARG;
 		current = current->next;

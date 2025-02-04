@@ -7,7 +7,7 @@ int	check_tokens_two(t_tokens *token)
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
-	if (token->type != PIPE && token->next->type >= REDIR_OUT)
+	if (token->type != PIPE && token->next->type >= PIPE)
 	{
 		printf("minishell: syntax error near unexpected token `%s'\n", token->next->content);
 		return (0);
@@ -32,7 +32,7 @@ int	check_tokens(t_shell *data)
 	}
 	while (token)
 	{
-		if (token->type >= REDIR_OUT && token->type <= PIPE)
+		if (token->type >= PIPE && token->type <= REDIR_IN)
 		{
 			if (!check_tokens_two(token))
 				return (0);
