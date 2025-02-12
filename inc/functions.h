@@ -16,6 +16,17 @@
 #include "structs.h"
 #include "libs.h"
 
+/* heredoc */
+void	create_pipe(int fd[2]);
+pid_t	create_fork(void);
+void	write_line_to_pipe(t_shell *data, char *line, int fd[2]);
+char	*loop_heredoc(t_shell *data, t_command *current, int fd[2]);
+int		execute_heredoc(t_shell *data , t_command *current, int fd[2]);
+int		heredoc_cmds(t_shell *data);
+
+/* singleton */
+t_shell	*ft_start_shell(void);
+
 /* signals */
 void    config_signals(void);
 void	handle_sigint(int signal);

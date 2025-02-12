@@ -52,7 +52,10 @@ t_tokens	*handle_redir_in(t_command *cmd, t_tokens *token)
 	if (token->type == REDIR_IN)
 		cmd->infile = ft_strdup(token->next->content);
 	else if (token->type == HEREDOC)
+	{
+		cmd->has_heredoc = true;
 		cmd->heredoc_delim = ft_strdup(token->next->content);
+	}
 	return (token->next);
 }
 

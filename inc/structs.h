@@ -44,6 +44,9 @@ typedef struct	s_command
 	char				*infile;
 	char				*outfile;
 	char				*heredoc_delim;
+	bool				has_heredoc;
+	int					heredoc_fd;
+	pid_t				heredoc_pid;
 	int					append; // 1 se ">>", 0 se ">", -1 se nenhum 
 	bool				has_pipe; // true se tiver um pipe
 	struct s_command	*next;

@@ -42,11 +42,41 @@ void	ft_tokenclear(t_tokens *lst)
 	}
 }
 
+void	clean_cmd_list(t_command *lst)
+{
+	t_command	*temp;
+	int			i;
+
+	while (lst)
+	{
+		temp = lst;
+		lst = lst->next;
+		if (temp->cmd)
+			free(temp->cmd);
+		if (temp->args)
+		{
+			i = 0;
+			while (temp->args[i])
+				free(temp->args[i++]);
+			free(temp->args);
+		}
+		if (temp->infile)
+			free(temp->infile);
+		if (temp->outfile)
+			free(temp->outfile);
+		if (temp->heredoc_delim)
+			free(temp->heredoc_delim);
+		free(temp);
+	}
+}
+
+// TODO: melhorar essa funcao
 void	free_exit(t_shell *data)
 {
 	free_lst(data->envvar);
 	free_lst(data->envvar_export);
 	ft_tokenclear(data->tokens);
+	clean_cmd_list(data->commands);
 	if (data->input)
 		free(data->input);
 }
