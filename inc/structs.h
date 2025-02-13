@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bruda-si <bruda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:38:35 by shulte            #+#    #+#             */
-/*   Updated: 2025/01/15 11:17:03 by bruda-si         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:24:21 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct				s_tokens
 typedef struct s_shell
 {
 	char        *input;
+	int			signal;
 	int			return_status; // $?
 	t_var		*envvar;
 	t_var		*envvar_export;
