@@ -63,6 +63,7 @@ int	ainput(t_shell *data)
 
 static void loop_those_shells(t_shell *data)
 {
+	config_signals();
 	while (1)
 	{
 		if(ft_get_input(data))
@@ -88,9 +89,6 @@ int main(int ac, char **av, char **envp)
 	}
 	(void)av;
 	data = ft_start_shell();
-	// config_signals();
-	signal(SIGINT, handle_sigint);
-	// signal(SIGQUIT, SIG_IGN);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
