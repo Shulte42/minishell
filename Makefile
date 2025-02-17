@@ -19,7 +19,7 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)dolar.c \
 			$(SRC_DIR)echo.c \
 			$(SRC_DIR)env.c \
-			$(SRC_DIR)execute_command.c \
+			$(SRC_DIR)execute_commands.c \
 			$(SRC_DIR)export.c \
 			$(SRC_DIR)finders.c \
 			$(SRC_DIR)ft_free.c \
@@ -47,7 +47,8 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)check_tokens.c \
 			$(SRC_DIR)create_cmd_list.c \
 			$(SRC_DIR)print_lst.c \
-			$(SRC_DIR)handle_heredoc.c
+			$(SRC_DIR)handle_heredoc.c \
+			$(SRC_DIR)external_commands.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

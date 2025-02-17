@@ -68,8 +68,8 @@ static void loop_those_shells(t_shell *data)
 		if(ft_get_input(data))
 		{
 			ft_input_analizes(data);
-			if (ainput(data))
-				break ;
+			// if (ainput(data))
+			// 	break ;
 			ft_tokenclear(data->tokens);
 			clean_cmd_list(data->commands);
 			free(data->input);
@@ -99,3 +99,7 @@ int main(int ac, char **av, char **envp)
 	loop_those_shells(data);
 	return (0);
 }
+/*
+ * Esta com erro quando executa dois comando de redir em sequencia 
+ *
+*/

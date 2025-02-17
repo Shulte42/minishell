@@ -103,12 +103,6 @@ void    ft_parsing_loop(t_shell *data)
 
 void    ft_input_analizes(t_shell *data)
 {
-	int	return_status;
-
 	ft_parsing_loop(data);
-	return_status = heredoc_cmds(data);
-	if (return_status != 0)
-	{
-		;
-	}
+	execute_commands(data);
 }

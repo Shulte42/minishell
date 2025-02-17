@@ -16,13 +16,14 @@
 #include "structs.h"
 #include "libs.h"
 
+/* execucao */
+void    execute_commands(t_shell *data);
+
 /* heredoc */
 void	create_pipe(int fd[2]);
 pid_t	create_fork(void);
 void	write_line_to_pipe(t_shell *data, char *line, int fd[2]);
-char	*loop_heredoc(t_shell *data, t_command *current, int fd[2]);
-int		execute_heredoc(t_shell *data , t_command *current, int fd[2]);
-int		heredoc_cmds(t_shell *data);
+void	loop_heredoc(t_shell *data, t_command *current, int fd[2]);
 
 /* singleton */
 t_shell	*ft_start_shell(void);
@@ -53,7 +54,7 @@ void        handle_new_command(t_command **head, t_command **current, t_tokens *
 void        clean_cmd_list(t_command *lst);
 
 /* execute commands */
-void	commands(t_shell	*data, char **args);
+void	external_commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
 void	execute_command(char **cmd, char **env_var);
 char	**envvar_array(t_var *lst);
