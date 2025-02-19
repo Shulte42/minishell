@@ -1,18 +1,9 @@
 #include "../inc/libs.h"
 
-int is_builtin(char *cmd)
-{
-	if (ft_strcmp(cmd, "env") == 0 || ft_strcmp(cmd, "export") == 0 ||
-		ft_strcmp(cmd, "exit") == 0 || ft_strcmp(cmd, "cd") == 0 ||
-		ft_strcmp(cmd, "unset") == 0 || ft_strcmp(cmd, "pwd") == 0 ||
-		ft_strcmp(cmd, "echo") == 0)
-		return (1); // É built-in
-	return (0); // Não é built-in
-}
-
 void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2])
 {
 	close(fd[0]);
+	ft_config_signals(0);
 	loop_heredoc(data, current, fd);
 	close(fd[1]);
 	exit(0);
@@ -22,8 +13,8 @@ void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid)
 {
 	int	status;
 
-	close(fd[1]);
-	current->heredoc_fd = fd[0];
+	close(fd[1]); // fechar a escrita
+	current->heredoc_fd = fd[0]; // salvar para caso precise dps
 	current->heredoc_pid = pid;
 	waitpid(pid, &status, 0);
 }
@@ -33,12 +24,16 @@ void	create_heredoc(t_command *current)
 	int		fd[2];
 	pid_t	pid;
 
-	create_pipe(fd);
-	pid = create_fork();
+	create_pipe(fd); // cria o pipe e em caso de erro da exit
+	pid = create_fork();// cria o fork e em caso de erro da exit
 	if (pid == 0)
 		handle_child_heredoc(ft_start_shell(), current, fd);
 	else
-		handle_parent_heredoc(current, fd, pid);
+	{
+		close(fd[1]); // fechar a escrita
+		current->heredoc_fd = fd[0]; // salvar para caso precise dps
+		current->heredoc_pid = pid;
+	}
 }
 
 void	handle_rerections(t_command *cmd)
@@ -59,60 +54,38 @@ void	handle_rerections(t_command *cmd)
 	}
 }
 
-void	execute_builtin(t_shell *data, t_command *cmd)
+void execute_commands(t_shell *data)
 {
-	if (ft_strcmp(cmd->cmd, "env") == 0)
-		mini_env(data->envvar);
-	else if (ft_strcmp(cmd->cmd, "export") == 0)
-		print_export(data);
-	else if (ft_strcmp(cmd->cmd, "exit") == 0)
-	{
-		free_exit(data);
-		exit(EXIT_FAILURE);
-	}
-	else if (ft_strcmp(cmd->cmd, "cd") == 0)
-		cd(data, cmd->args);
-	else if (ft_strcmp(cmd->cmd, "unset") == 0)
-		unset(data, cmd->args);
-	else if (ft_strcmp(cmd->cmd, "pwd") == 0)
-		mini_pwd(data);
-	else if (ft_strcmp(cmd->cmd, "echo") == 0)
-		mini_echo(cmd->args, 1);
-}
+    t_command *cmd;
+    pid_t pid;
+    int status;
 
-void    execute_commands(t_shell *data)
-{
-	t_command   *cmd;
-	pid_t		pid;
-	int			status;
-
-	cmd = data->commands;
-	while (cmd != NULL)
+    cmd = data->commands;
+    while (cmd != NULL)
 	{
-		if (cmd->has_heredoc) // 1. Heredoc
-			create_heredoc(cmd);
-		pid = create_fork();
-		if (pid == 0)
+        if (cmd->has_heredoc)
+            create_heredoc(cmd); // Cria o heredoc se o comando precisar
+		if (ft_strcmp(cmd->cmd, "exit") == 0)
 		{
-			handle_rerections(cmd); // Verificar redirects
-			if (is_builtin(cmd->cmd)) // 2. Builtins
-				execute_builtin(data, cmd);
-			else // 3. Comandos simples (externos)
-				external_commands(data, cmd->args);
-			exit(EXIT_SUCCESS);
+			execute_builtin(data, cmd); // Executa exit diretamente no pai
+			return; // Sai de execute_commands (encerra o Minishell)
 		}
-		else
+        pid = create_fork();
+        if (pid == 0) // Processo filho
 		{
-			waitpid(pid, &status, 0);
-			data->return_status = WEXITSTATUS(status);
-			if (WEXITSTATUS(status) < 0)
-			{
-				perror("Minishell");
-				exit(EXIT_FAILURE);
-			}
-			if (WEXITSTATUS(status) > 0)
-				exit(EXIT_FAILURE);
-		}
-		cmd = cmd->next;
-	}
+            handle_rerections(cmd); // Lida com redirecionamentos (incluindo heredoc)
+            if (is_builtin(cmd->cmd))
+                execute_builtin(data, cmd);
+            else
+                external_commands(data, cmd->args);
+            exit(data->return_status); // Sai com o status do comando
+        }
+		else // Processo pai
+		{
+            waitpid(pid, &status, 0);
+            data->return_status = WEXITSTATUS(status);
+			set_questionvar(data);
+        }
+        cmd = cmd->next;
+    }
 }

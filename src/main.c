@@ -1,5 +1,7 @@
 #include "../inc/libs.h"
 
+int	global_sig;
+
 t_shell *ft_start_shell(void)
 {
 	static t_shell shell;
@@ -87,9 +89,10 @@ int main(int ac, char **av, char **envp)
 		return (1);
 	}
 	(void)av;
+	global_sig = 0;
 	data = ft_start_shell();
 	// config_signals();
-	signal(SIGINT, handle_sigint);
+	// signal(SIGINT, handle_sigint);
 	// signal(SIGQUIT, SIG_IGN);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
@@ -100,6 +103,6 @@ int main(int ac, char **av, char **envp)
 	return (0);
 }
 /*
- * Esta com erro quando executa dois comando de redir em sequencia 
+ * 
  *
 */

@@ -48,7 +48,9 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)create_cmd_list.c \
 			$(SRC_DIR)print_lst.c \
 			$(SRC_DIR)handle_heredoc.c \
-			$(SRC_DIR)external_commands.c
+			$(SRC_DIR)external_commands.c \
+			$(SRC_DIR)signal.c \
+			$(SRC_DIR)execute_builtin.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

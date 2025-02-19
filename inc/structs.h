@@ -79,7 +79,9 @@ typedef struct				s_tokens
 typedef struct s_shell
 {
 	char        *input;
+	int			signal;
 	int			return_status; // $?
+	char		**ev_array;
 	t_var		*envvar;
 	t_var		*envvar_export;
 	t_args      *args;
