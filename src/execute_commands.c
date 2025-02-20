@@ -3,7 +3,6 @@
 void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2])
 {
 	close(fd[0]);
-	ft_config_signals(0);
 	loop_heredoc(data, current, fd);
 	close(fd[1]);
 	exit(0);
@@ -24,15 +23,20 @@ void	create_heredoc(t_command *current)
 	int		fd[2];
 	pid_t	pid;
 
+	ft_ignore_some_signals();
 	create_pipe(fd); // cria o pipe e em caso de erro da exit
 	pid = create_fork();// cria o fork e em caso de erro da exit
 	if (pid == 0)
+	{
+		ft_config_signals(1);
 		handle_child_heredoc(ft_start_shell(), current, fd);
+	}
 	else
 	{
 		close(fd[1]); // fechar a escrita
 		current->heredoc_fd = fd[0]; // salvar para caso precise dps
 		current->heredoc_pid = pid;
+		sigaction(SIGINT, sa_original, NULL);
 	}
 }
 
@@ -70,14 +74,17 @@ void execute_commands(t_shell *data)
 			execute_builtin(data, cmd); // Executa exit diretamente no pai
 			return; // Sai de execute_commands (encerra o Minishell)
 		}
+		ft_ignore_some_signals();
         pid = create_fork();
         if (pid == 0) // Processo filho
 		{
+			ft_redefine_child_signals();
             handle_rerections(cmd); // Lida com redirecionamentos (incluindo heredoc)
             if (is_builtin(cmd->cmd))
                 execute_builtin(data, cmd);
             else
                 external_commands(data, cmd->args);
+			ft_config_signals(0);
             exit(data->return_status); // Sai com o status do comando
         }
 		else // Processo pai

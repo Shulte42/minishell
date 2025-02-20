@@ -16,8 +16,11 @@ bool    ft_get_input(t_shell *data)
 	pwd = color_to_prompt(get_pathname());
 	input = readline(pwd);
 	free(pwd);
-	if (input == NULL)
-		return (false); //todo: lidar com crtl D
+	if (input == NULL) // crtl+D faz o readline retonar NULL, entao fecha o minishell
+	{
+		free_exit(data);
+		exit(EXIT_SUCCESS);
+	}
 	if (input[0] == 0 || only_space(input)) /* input somente espaco devolve um novo prompt */
 	{
 		free(input);
@@ -91,9 +94,7 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	global_sig = 0;
 	data = ft_start_shell();
-	// config_signals();
-	// signal(SIGINT, handle_sigint);
-	// signal(SIGQUIT, SIG_IGN);
+	ft_config_signals(0);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
