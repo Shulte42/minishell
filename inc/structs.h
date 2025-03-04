@@ -49,6 +49,7 @@ typedef struct	s_command
 	pid_t				heredoc_pid;
 	int					append; // 1 se ">>", 0 se ">", -1 se nenhum 
 	bool				has_pipe; // true se tiver um pipe
+	int					pipe_fd[2];
 	struct s_command	*next;
 }						t_command;
 

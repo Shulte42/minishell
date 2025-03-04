@@ -36,7 +36,7 @@ void	create_heredoc(t_command *current)
 		close(fd[1]); // fechar a escrita
 		current->heredoc_fd = fd[0]; // salvar para caso precise dps
 		current->heredoc_pid = pid;
-		sigaction(SIGINT, sa_original, NULL);
+		waitpid(pid, NULL, 0);
 	}
 }
 

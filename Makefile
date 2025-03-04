@@ -1,6 +1,6 @@
 NAME	= minishell
 CC		= cc
-CFLAGS 	= -Wall -Wextra -Werror -g
+CFLAGS 	=  -Wall -Wextra -Werror -g
 RM		= rm -f
 
 # Directories
@@ -50,7 +50,9 @@ SRCS	=	$(SRC_DIR)cd.c \
 			$(SRC_DIR)handle_heredoc.c \
 			$(SRC_DIR)external_commands.c \
 			$(SRC_DIR)signal.c \
-			$(SRC_DIR)execute_builtin.c
+			$(SRC_DIR)execute_builtin.c \
+			$(SRC_DIR)exe.c \
+			$(SRC_DIR)pipeline.c
 			
 OBJS	= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

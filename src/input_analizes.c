@@ -104,5 +104,5 @@ void    ft_parsing_loop(t_shell *data)
 void    ft_input_analizes(t_shell *data)
 {
 	ft_parsing_loop(data);
-	execute_commands(data);
+	exe(data);
 }
