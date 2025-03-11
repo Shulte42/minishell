@@ -82,6 +82,7 @@ typedef struct s_shell
 	char        *input;
 	int			signal;
 	int			return_status; // $?
+	int			std_fileno[2];
 	char		**ev_array;
 	t_var		*envvar;
 	t_var		*envvar_export;

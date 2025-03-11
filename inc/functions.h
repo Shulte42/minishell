@@ -20,13 +20,13 @@
 void    execute_commands(t_shell *data);
 int     is_builtin(char *cmd);
 void	execute_builtin(t_shell *data, t_command *cmd);
-void	handle_rerections(t_command *cmd);
+void	handle_redirects(t_command *cmd);
 void	create_heredoc(t_command *current);
 void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid);
 void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2]);
 void    exe(t_shell *data);
 void    handle_pipeline(t_shell *data, t_command *cmd);
-
+void	save_std_fileno(t_shell *data, int code);
 
 
 /* signal */

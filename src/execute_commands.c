@@ -40,7 +40,7 @@ void	create_heredoc(t_command *current)
 	}
 }
 
-void	handle_rerections(t_command *cmd)
+void	handle_redirects(t_command *cmd)
 {
 	if (cmd->infile)
 		redirect_input(cmd->infile);
@@ -79,7 +79,7 @@ void execute_commands(t_shell *data)
         if (pid == 0) // Processo filho
 		{
 			ft_redefine_child_signals();
-            handle_rerections(cmd); // Lida com redirecionamentos (incluindo heredoc)
+            handle_redirects(cmd); // Lida com redirecionamentos (incluindo heredoc)
             if (is_builtin(cmd->cmd))
                 execute_builtin(data, cmd);
             else
