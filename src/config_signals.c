@@ -6,7 +6,7 @@
 /*   By: shulte <shulte@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 09:30:09 by shulte            #+#    #+#             */
-/*   Updated: 2025/02/13 16:27:01 by shulte           ###   ########.fr       */
+/*   Updated: 2025/02/18 11:27:27 by shulte           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,20 @@ void	handle_signal(int signal)
 		rl_replace_line("", 0);
 		rl_redisplay();
 	}
-	else
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
+	// else
+	// {
+	// 	ft_start_shell()->
+	// 	printf("\n");
+	// 	rl_on_new_line();
+	// 	rl_replace_line("", 0);
+	// 	rl_redisplay();
+	// }
 	ft_start_shell()->return_status = 128 + signal;
+}
+
+void handle_signal_child(int signal)
+{
+	
 }
 
 void    config_signals(void)

@@ -15,7 +15,10 @@ bool    ft_get_input(t_shell *data)
 	input = readline(pwd);
 	free(pwd);
 	if (input == NULL)
+	{
+		// free_exit(data);
 		return (false); //todo: lidar com crtl D
+	}
 	if (input[0] == 0 || only_space(input)) /* input somente espaco devolve um novo prompt */
 	{
 		free(input);
@@ -75,6 +78,8 @@ static void loop_those_shells(t_shell *data)
 			clean_cmd_list(data->commands);
 			free(data->input);
 		}
+		if (data->input == NULL)
+			break;
 	}
 }
 
