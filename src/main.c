@@ -1,5 +1,7 @@
 #include "../inc/libs.h"
 
+int	global_sig;
+
 t_shell *ft_start_shell(void)
 {
 	static t_shell shell;
@@ -14,10 +16,10 @@ bool    ft_get_input(t_shell *data)
 	pwd = color_to_prompt(get_pathname());
 	input = readline(pwd);
 	free(pwd);
-	if (input == NULL)
+	if (input == NULL) // crtl+D faz o readline retonar NULL, entao fecha o minishell
 	{
-		// free_exit(data);
-		return (false); //todo: lidar com crtl D
+		free_exit(data);
+		exit(EXIT_SUCCESS);
 	}
 	if (input[0] == 0 || only_space(input)) /* input somente espaco devolve um novo prompt */
 	{
@@ -72,8 +74,8 @@ static void loop_those_shells(t_shell *data)
 		if(ft_get_input(data))
 		{
 			ft_input_analizes(data);
-			if (ainput(data))
-				break ;
+			// if (ainput(data))
+			// 	break ;
 			ft_tokenclear(data->tokens);
 			clean_cmd_list(data->commands);
 			free(data->input);
@@ -93,7 +95,11 @@ int main(int ac, char **av, char **envp)
 		return (1);
 	}
 	(void)av;
+	global_sig = 0;
 	data = ft_start_shell();
+	// config_signals();
+	signal(SIGINT, handle_sigint);
+	// signal(SIGQUIT, SIG_IGN);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
@@ -102,3 +108,7 @@ int main(int ac, char **av, char **envp)
 	loop_those_shells(data);
 	return (0);
 }
+/*
+ * 
+ *
+*/

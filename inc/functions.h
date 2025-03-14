@@ -16,13 +16,32 @@
 #include "structs.h"
 #include "libs.h"
 
+/* execucao */
+void    execute_commands(t_shell *data);
+int     is_builtin(char *cmd);
+void	execute_builtin(t_shell *data, t_command *cmd);
+void	handle_redirects(t_command *cmd);
+void	create_heredoc(t_command *current);
+void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid);
+void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2]);
+void    exe(t_shell *data);
+void    handle_pipeline(t_shell *data, t_command *cmd);
+void	save_std_fileno(t_shell *data, int code);
+
+
+/* signal */
+void	ft_config_signals(int process_type);
+void	hd_ft_handle_sigint(int signal);
+void	ft_handle_sigint(int sig);
+void	ft_ignore_some_signals(void);
+void	ft_redefine_child_signals(void);
+
 /* heredoc */
 void	create_pipe(int fd[2]);
 pid_t	create_fork(void);
 void	write_line_to_pipe(t_shell *data, char *line, int fd[2]);
-char	*loop_heredoc(t_shell *data, t_command *current, int fd[2]);
-int		execute_heredoc(t_shell *data , t_command *current, int fd[2]);
-int		heredoc_cmds(t_shell *data);
+void	loop_heredoc(t_shell *data, t_command *current, int fd[2]);
+void	close_fds(int fd[2]);
 
 /* singleton */
 t_shell	*ft_start_shell(void);
@@ -53,9 +72,9 @@ void        handle_new_command(t_command **head, t_command **current, t_tokens *
 void        clean_cmd_list(t_command *lst);
 
 /* execute commands */
-void	commands(t_shell	*data, char **args);
+void	external_commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
-void	execute_command(char **cmd, char **env_var);
+void	exec_external_cmd(char **cmd, char **env_var);
 char	**envvar_array(t_var *lst);
 
 /* utils */

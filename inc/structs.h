@@ -49,6 +49,7 @@ typedef struct	s_command
 	pid_t				heredoc_pid;
 	int					append; // 1 se ">>", 0 se ">", -1 se nenhum 
 	bool				has_pipe; // true se tiver um pipe
+	int					pipe_fd[2];
 	struct s_command	*next;
 }						t_command;
 
@@ -81,6 +82,8 @@ typedef struct s_shell
 	char        *input;
 	int			signal;
 	int			return_status; // $?
+	int			std_fileno[2];
+	char		**ev_array;
 	t_var		*envvar;
 	t_var		*envvar_export;
 	t_args      *args;

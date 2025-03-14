@@ -39,6 +39,6 @@
 # define RESET "\033[0m"
 
 //extern volatile sig_atomic_t	g_sig;
-// extern int	g_sig;
+extern int	global_sig;
 
 #endif

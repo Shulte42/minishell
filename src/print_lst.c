@@ -39,10 +39,14 @@ void	print_cmd_lst(t_command *lst)
 			printf("Infile: %s\n", current->infile);
 		if (current->outfile)
 			printf("Outfile: %s\n", current->outfile);
+		if (current->has_heredoc)
+			printf("Heredoc: True \n");
 		if (current->heredoc_delim)
 			printf("Delim: %s\n", current->heredoc_delim);
-		if (current->append != -1)
-			printf("Append: %d\n", current->append);
+		if (current->append == 0)
+			printf("Append: 0 (substituir)\n");
+		if (current->append == 1)
+			printf("Append: 1 (adicionar)\n");
 		if (current->has_pipe)
 			printf("Pipe: True\n");
 		printf("=================================\n");

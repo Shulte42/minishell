@@ -10,7 +10,7 @@ void 	redirect_input(char *file)
 	{
 		perror("Error redirecting input");
 		close(fd_in);
-		return ;
+		exit(EXIT_FAILURE);
 	}
 	close(fd_in);
 }
@@ -25,7 +25,7 @@ void	redirect_output(char *file)
 	{
 		perror("Error redirecting output");
 		close(fd_out);
-		return ;
+		exit(EXIT_FAILURE);
 	}
 	close(fd_out);
 }
@@ -40,7 +40,7 @@ void	redirect_output_append(char *file)
 	{
 		perror("Error redirecting output");
 		close(fd_out);
-		return ;
+		exit(EXIT_FAILURE);
 	}
 	close (fd_out);
 }

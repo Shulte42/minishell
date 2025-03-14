@@ -29,23 +29,6 @@ char	**envvar_array(t_var *lst)
 	return (env_var);
 }
 
-void	commands(t_shell *data, char **args)
-{
-	pid_t	pid;
-	char	**env_var;
-
-	env_var = NULL;
-	pid = fork();
-	if (pid == 0)
-	{
-		env_var = envvar_array(data->envvar);
-		execute_command(args, env_var);
-	}
-	else
-		wait(NULL);
-	free_array(env_var);
-}
-
 char	*get_command_path(char *cmd, char **env_var)
 {
 	char	**all_paths;
@@ -74,7 +57,7 @@ char	*get_command_path(char *cmd, char **env_var)
 	return (NULL);
 }
 
-void	execute_command(char **cmd, char **env_var)
+void	exec_external_cmd(char **cmd, char **env_var)
 {
 	char	*command_path;
 
@@ -84,11 +67,18 @@ void	execute_command(char **cmd, char **env_var)
 	if (!command_path)
 	{
 		printf("-minishell: %s: command not found\n", cmd[0]);
+		free_array(env_var);
 		exit(127);
 	}
 	execve(command_path, cmd, env_var);
-	free_array(cmd);
+	free_array(env_var);
 	free(command_path);
 	perror("execve");
 	exit(1);
+}
+
+void	external_commands(t_shell *data, char **args)
+{
+	data->ev_array = envvar_array(data->envvar); // lembrar de liberar isso no processo principal
+	exec_external_cmd(args, data->ev_array);
 }
