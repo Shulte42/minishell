@@ -68,7 +68,6 @@ int	ainput(t_shell *data)
 
 static void loop_those_shells(t_shell *data)
 {
-	config_signals();
 	while (1)
 	{
 		if(ft_get_input(data))
@@ -80,8 +79,6 @@ static void loop_those_shells(t_shell *data)
 			clean_cmd_list(data->commands);
 			free(data->input);
 		}
-		if (data->input == NULL)
-			break;
 	}
 }
 
@@ -97,9 +94,7 @@ int main(int ac, char **av, char **envp)
 	(void)av;
 	global_sig = 0;
 	data = ft_start_shell();
-	// config_signals();
-	signal(SIGINT, handle_sigint);
-	// signal(SIGQUIT, SIG_IGN);
+	ft_config_signals(0);
 	data->envvar = create_lst_envvar(envp);
 	data->envvar_export = create_lst_export(data);
 	sort_var(data->envvar_export);
