@@ -15,7 +15,8 @@ void	handle_pipeline(t_shell *data, t_command *cmd)
 		if (pid == 0) // Processo filho
 		{
 			// Redirecionamentos (tem prioridade sobre pipes)
-			handle_redirects(cmd);
+			if (handle_redirects(cmd))
+				exit(1);
 			// Se nao houve redirecionamento de entrada, usa o pipe anterior
 			if (!cmd->infile && prev_fd != -1)
 			{

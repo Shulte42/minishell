@@ -40,10 +40,13 @@ void	create_heredoc(t_command *current)
 	}
 }
 
-void	handle_redirects(t_command *cmd)
+int	handle_redirects(t_command *cmd)
 {
 	if (cmd->infile)
-		redirect_input(cmd->infile);
+	{
+		if (redirect_input(cmd->infile) == -1)
+			return (-1);
+	}
 	if (cmd->outfile)
 	{
 		if (cmd->append)
@@ -56,6 +59,7 @@ void	handle_redirects(t_command *cmd)
 		dup2(cmd->heredoc_fd, STDIN_FILENO);
 		close(cmd->heredoc_fd);
 	}
+	return (0);
 }
 
 void execute_commands(t_shell *data)

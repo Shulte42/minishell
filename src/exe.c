@@ -36,7 +36,11 @@ void	exe(t_shell *data)
 	else
 	{
 		save_std_fileno(data, 0);
-		handle_redirects(cmd);
+		if (handle_redirects(cmd))
+		{
+			save_std_fileno(data, 1);
+			return ;
+		}
 		if (is_builtin(cmd->cmd))
 			execute_builtin(data, cmd);
 		else

@@ -1,11 +1,16 @@
 #include "../inc/libs.h"
 
 /* < */
-void 	redirect_input(char *file)
+int 	redirect_input(char *file)
 {
 	int	fd_in;
 
-	fd_in = open_file(file, O_RDONLY, 0);
+	fd_in = open(file, O_RDONLY, 0);
+	if (fd_in == -1)
+	{
+		printf("minishell: %s: No such file or directory\n", file);
+		return (-1);
+	}
 	if (dup2(fd_in, STDIN_FILENO) == -1)
 	{
 		perror("Error redirecting input");
@@ -13,6 +18,7 @@ void 	redirect_input(char *file)
 		exit(EXIT_FAILURE);
 	}
 	close(fd_in);
+	return (0);
 }
 
 /* > */

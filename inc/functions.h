@@ -20,7 +20,6 @@
 void    execute_commands(t_shell *data);
 int     is_builtin(char *cmd);
 void	execute_builtin(t_shell *data, t_command *cmd);
-void	handle_redirects(t_command *cmd);
 void	create_heredoc(t_command *current);
 void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid);
 void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2]);
@@ -91,7 +90,8 @@ char	*ft_strcat(char *dest, char *src);
 char	*ft_strdup_two(const char *s, char c);
 
 /* redirect */
-void 	redirect_input(char *file);
+int     handle_redirects(t_command *cmd);
+int 	redirect_input(char *file);
 void	redirect_output(char *file);
 void	redirect_output_append(char *file);
 void	redirect_heredoc(char *delimiter);
