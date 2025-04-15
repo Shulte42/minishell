@@ -100,6 +100,8 @@ int main(int ac, char **av, char **envp)
 	sort_var(data->envvar_export);
 	set_shlvl(data);
 	set_questionvar(data);
+	data->std_fileno[0] = -1;
+	data->std_fileno[1] = -1;
 	loop_those_shells(data);
 	return (0);
 }

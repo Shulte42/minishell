@@ -32,7 +32,8 @@ void	hd_ft_handle_sigint(int signal)
 	if (signal == SIGINT)
 	{
 		global_sig = SIGINT;
-		close(STDIN_FILENO);
+		write(STDOUT_FILENO, "\n", 1);
+		exit(130);
 	}
 }
 
@@ -45,9 +46,9 @@ void	ft_config_signals(int process_type)
 	sigemptyset(&sigquit.sa_mask);
 	sigquit.sa_handler = SIG_IGN;
 	if (process_type == 0)
-		sigint.sa_handler = ft_handle_sigint;
+		sigint.sa_handler = ft_handle_sigint; // Shell principal
 	else
-		sigint.sa_handler = hd_ft_handle_sigint;
+		sigint.sa_handler = hd_ft_handle_sigint; // Heredoc/filho
 	sigint.sa_flags = 0;
 	sigquit.sa_flags = 0;
 	sigaction(SIGINT, &sigint, NULL);

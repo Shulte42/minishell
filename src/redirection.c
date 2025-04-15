@@ -8,7 +8,7 @@ int 	redirect_input(char *file)
 	fd_in = open(file, O_RDONLY, 0);
 	if (fd_in == -1)
 	{
-		printf("minishell: %s: No such file or directory\n", file);
+		perror(file);
 		return (-1);
 	}
 	if (dup2(fd_in, STDIN_FILENO) == -1)
@@ -22,11 +22,16 @@ int 	redirect_input(char *file)
 }
 
 /* > */
-void	redirect_output(char *file)
+int	redirect_output(char *file)
 {
 	int	fd_out;
 
-	fd_out = open_file(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd_out = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd_out == -1)
+	{
+		perror(file);
+		return (-1);
+	}
 	if (dup2(fd_out, STDOUT_FILENO) == -1)
 	{
 		perror("Error redirecting output");
@@ -34,14 +39,20 @@ void	redirect_output(char *file)
 		exit(EXIT_FAILURE);
 	}
 	close(fd_out);
+	return (0);
 }
 
 /* >> */
-void	redirect_output_append(char *file)
+int	redirect_output_append(char *file)
 {
 	int	fd_out;
 
-	fd_out = open_file(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd_out = open(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (fd_out == -1)
+	{
+		perror(file);
+		return (-1);
+	}
 	if (dup2(fd_out, STDOUT_FILENO) == -1)
 	{
 		perror("Error redirecting output");
@@ -49,34 +60,33 @@ void	redirect_output_append(char *file)
 		exit(EXIT_FAILURE);
 	}
 	close (fd_out);
+	return (0);
 }
 
-/* << */
-void	redirect_heredoc(char *delimiter)
+int	handle_redirects(t_command *cmd)
 {
-	int		fd[2];
-	char	buffer[1024];
-	ssize_t	bytes_read;
-
-	if (pipe(fd) == -1)
-		return (perror("Error creating pipe"));
-	while (1)
+	if (cmd->infile)
 	{
-		write(STDIN_FILENO, "> ", 2);
-		bytes_read = read(STDIN_FILENO, buffer, sizeof(buffer) - 1);
-		if (bytes_read <= 0)
-			break ;
-		buffer[bytes_read] = '\0';
-		if (ft_strncmp(buffer, delimiter, ft_strlen(delimiter)) == 0
-			&& buffer[ft_strlen(delimiter)] == '\n')
-			break ;
-		write(fd[1], buffer, bytes_read);
+		if (redirect_input(cmd->infile) == -1)
+			return (-1);
 	}
-	close(fd[1]);
-	if (dup2(fd[0], STDIN_FILENO) == - 1)
+	if (cmd->outfile)
 	{
-		close(fd[0]);
-		return (perror("Error redirecting heredoc"));
+		if (cmd->append)
+		{
+			if (redirect_output_append(cmd->outfile) == -1)
+				return (-1);
+		}
+		else
+		{
+			if (redirect_output(cmd->outfile) == -1)
+				return (-1);
+		}
 	}
-	close(fd[0]);
+	if (cmd->has_heredoc)
+	{
+		dup2(cmd->heredoc_fd, STDIN_FILENO);
+		close(cmd->heredoc_fd);
+	}
+	return (0);
 }

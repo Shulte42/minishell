@@ -17,14 +17,15 @@
 #include "libs.h"
 
 /* execucao */
-void    execute_commands(t_shell *data);
-int     is_builtin(char *cmd);
+void	execute_commands(t_shell *data);
+int		is_builtin(char *cmd);
 void	execute_builtin(t_shell *data, t_command *cmd);
 void	create_heredoc(t_command *current);
 void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid);
 void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2]);
-void    exe(t_shell *data);
-void    handle_pipeline(t_shell *data, t_command *cmd);
+void	exe(t_shell *data);
+void	handle_pipeline(t_shell *data, t_command *cmd);
+void    wait_for_children(t_shell *data, t_command *cmd, int cmd_count);
 void	save_std_fileno(t_shell *data, int code);
 
 
@@ -66,9 +67,9 @@ int		check_tokens_two(t_tokens *token);
 t_command	*create_cmd_list(t_tokens *tokens);
 t_tokens	*handle_redir_out(t_command *cmd, t_tokens *token);
 t_tokens	*handle_redir_in(t_command *cmd, t_tokens *token);
-void        handle_argument(t_command *cmd, t_tokens *token);
-void        handle_new_command(t_command **head, t_command **current, t_tokens *token);
-void        clean_cmd_list(t_command *lst);
+void		handle_argument(t_command *cmd, t_tokens *token);
+void		handle_new_command(t_command **head, t_command **current, t_tokens *token);
+void		clean_cmd_list(t_command *lst);
 
 /* execute commands */
 void	external_commands(t_shell	*data, char **args);
@@ -90,10 +91,10 @@ char	*ft_strcat(char *dest, char *src);
 char	*ft_strdup_two(const char *s, char c);
 
 /* redirect */
-int     handle_redirects(t_command *cmd);
+int		handle_redirects(t_command *cmd);
 int 	redirect_input(char *file);
-void	redirect_output(char *file);
-void	redirect_output_append(char *file);
+int		redirect_output(char *file);
+int 	redirect_output_append(char *file);
 void	redirect_heredoc(char *delimiter);
 
 void	mini_echo(char	**args, int fd);

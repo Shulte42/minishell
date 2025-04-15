@@ -70,13 +70,40 @@ void	clean_cmd_list(t_command *lst)
 	}
 }
 
+void	close_remaining_fds()
+{
+	int	fd;
+
+	fd = 3;
+	while (fd < 1024)
+	{
+		if (fcntl(fd, F_GETFD) != -1)
+		{
+			close(fd);
+			printf("Closed FD: %d\n", fd);
+		}
+		fd++;
+	}
+}
+
 // TODO: melhorar essa funcao
 void	free_exit(t_shell *data)
 {
+	if (data->std_fileno[0] != -1)
+	{
+		close(data->std_fileno[0]);
+		data->std_fileno[0] = -1;
+	}
+	if (data->std_fileno[1] != -1)
+	{
+		close(data->std_fileno[1]);
+		data->std_fileno[1] = -1;
+	}
 	free_lst(data->envvar);
 	free_lst(data->envvar_export);
 	ft_tokenclear(data->tokens);
 	clean_cmd_list(data->commands);
 	if (data->input)
 		free(data->input);
+	close_remaining_fds();
 }

@@ -1,102 +1,40 @@
 #include "../inc/libs.h"
 
-void	handle_child_heredoc(t_shell *data, t_command *current, int fd[2])
-{
-	close(fd[0]);
-	loop_heredoc(data, current, fd);
-	close(fd[1]);
-	exit(0);
-}
-
-void	handle_parent_heredoc(t_command *current, int fd[2], pid_t pid)
-{
-	int	status;
-
-	close(fd[1]); // fechar a escrita
-	current->heredoc_fd = fd[0]; // salvar para caso precise dps
-	current->heredoc_pid = pid;
-	waitpid(pid, &status, 0);
-}
-
-void	create_heredoc(t_command *current)
-{
-	int		fd[2];
-	pid_t	pid;
-
-	ft_ignore_some_signals();
-	create_pipe(fd); // cria o pipe e em caso de erro da exit
-	pid = create_fork();// cria o fork e em caso de erro da exit
-	if (pid == 0)
-	{
-		ft_config_signals(1);
-		handle_child_heredoc(ft_start_shell(), current, fd);
-	}
-	else
-	{
-		close(fd[1]); // fechar a escrita
-		current->heredoc_fd = fd[0]; // salvar para caso precise dps
-		current->heredoc_pid = pid;
-		waitpid(pid, NULL, 0);
-	}
-}
-
-int	handle_redirects(t_command *cmd)
-{
-	if (cmd->infile)
-	{
-		if (redirect_input(cmd->infile) == -1)
-			return (-1);
-	}
-	if (cmd->outfile)
-	{
-		if (cmd->append)
-			redirect_output_append(cmd->outfile);
-		else
-			redirect_output(cmd->outfile);
-	}
-	if (cmd->has_heredoc)
-	{
-		dup2(cmd->heredoc_fd, STDIN_FILENO);
-		close(cmd->heredoc_fd);
-	}
-	return (0);
-}
-
 void execute_commands(t_shell *data)
 {
-    t_command *cmd;
-    pid_t pid;
-    int status;
+	t_command *cmd;
+	pid_t pid;
+	int status;
 
-    cmd = data->commands;
-    while (cmd != NULL)
+	cmd = data->commands;
+	while (cmd != NULL)
 	{
-        if (cmd->has_heredoc)
-            create_heredoc(cmd); // Cria o heredoc se o comando precisar
+		if (cmd->has_heredoc)
+			create_heredoc(cmd); // Cria o heredoc se o comando precisar
 		if (ft_strcmp(cmd->cmd, "exit") == 0)
 		{
 			execute_builtin(data, cmd); // Executa exit diretamente no pai
 			return; // Sai de execute_commands (encerra o Minishell)
 		}
 		ft_ignore_some_signals();
-        pid = create_fork();
-        if (pid == 0) // Processo filho
+		pid = create_fork();
+		if (pid == 0)
 		{
 			ft_redefine_child_signals();
-            handle_redirects(cmd); // Lida com redirecionamentos (incluindo heredoc)
-            if (is_builtin(cmd->cmd))
-                execute_builtin(data, cmd);
-            else
-                external_commands(data, cmd->args);
+			handle_redirects(cmd); // Lida com redirecionamentos (incluindo heredoc)
+			if (is_builtin(cmd->cmd))
+				execute_builtin(data, cmd);
+			else
+				external_commands(data, cmd->args);
 			ft_config_signals(0);
-            exit(data->return_status); // Sai com o status do comando
-        }
-		else // Processo pai
+			exit(data->return_status); // Sai com o status do comando
+		}
+		else
 		{
-            waitpid(pid, &status, 0);
-            data->return_status = WEXITSTATUS(status);
+			waitpid(pid, &status, 0);
+			data->return_status = WEXITSTATUS(status);
 			set_questionvar(data);
-        }
-        cmd = cmd->next;
-    }
+		}
+		cmd = cmd->next;
+	}
 }
