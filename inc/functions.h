@@ -74,7 +74,7 @@ void		clean_cmd_list(t_command *lst);
 /* execute commands */
 void	external_commands(t_shell	*data, char **args);
 char	*get_command_path(char *cmd, char **envp);
-void	exec_external_cmd(char **cmd, char **env_var);
+void	exec_external_cmd(char **cmd);
 char	**envvar_array(t_var *lst);
 
 /* utils */

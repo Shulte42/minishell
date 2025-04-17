@@ -85,7 +85,7 @@ void	handle_pipeline(t_shell *data, t_command *cmd)
 			if (is_builtin(current->cmd))
 				execute_builtin(data, current);
 			else
-				exec_external_cmd(current->args, envvar_array(data->envvar));
+				exec_external_cmd(current->args);
 			exit(EXIT_SUCCESS);
 		}
 		current->pid = pid; // Armazena o PID para esperar depois

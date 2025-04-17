@@ -57,12 +57,17 @@ char	*get_command_path(char *cmd, char **env_var)
 	return (NULL);
 }
 
-void	exec_external_cmd(char **cmd, char **env_var)
+void	exec_external_cmd(char **cmd)
 {
 	char	*command_path;
+	char	**env_var;
 
+	env_var = envvar_array(ft_start_shell()->envvar);
 	if (!cmd[0] || only_space(cmd[0]) || check_envp(env_var))
+	{
+		free_array(env_var);
 		exit(1);
+	}
 	command_path = get_command_path(cmd[0], env_var);
 	if (!command_path)
 	{
@@ -80,5 +85,5 @@ void	exec_external_cmd(char **cmd, char **env_var)
 void	external_commands(t_shell *data, char **args)
 {
 	data->ev_array = envvar_array(data->envvar); // lembrar de liberar isso no processo principal
-	exec_external_cmd(args, data->ev_array);
+	exec_external_cmd(args);
 }

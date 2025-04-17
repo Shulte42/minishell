@@ -54,7 +54,7 @@ void	exe(t_shell *data)
 		{
 			pid = create_fork();
 			if (pid == 0)
-				exec_external_cmd(cmd->args, envvar_array(data->envvar));
+				exec_external_cmd(cmd->args);
 			else
 			{
 				waitpid(pid, &status, 0);
