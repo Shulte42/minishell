@@ -14,7 +14,7 @@ bool    ft_get_input(t_shell *data)
 	char	*pwd;
 	
 	pwd = color_to_prompt(get_pathname());
-	input = readline(pwd);
+	input = readline("minishell$ ");
 	free(pwd);
 	if (input == NULL) // crtl+D faz o readline retonar NULL, entao fecha o minishell
 	{

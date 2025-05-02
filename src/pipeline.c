@@ -69,9 +69,7 @@ void	handle_pipeline(t_shell *data, t_command *cmd)
 		pid = create_fork();
 		if (pid == 0)
 		{
-			if (handle_redirects(current) == -1)
-				exit(1);
-			if (!current->infile && prev_fd != -1)
+			if (!current->has_heredoc && !current->infile && prev_fd != -1)
 			{
 				dup2(prev_fd, STDIN_FILENO);
 				close(prev_fd);
@@ -82,6 +80,8 @@ void	handle_pipeline(t_shell *data, t_command *cmd)
 				close(fd[0]);
 				close(fd[1]);
 			}
+			if (handle_redirects(current) == -1)
+				exit(1);
 			if (is_builtin(current->cmd))
 				execute_builtin(data, current);
 			else

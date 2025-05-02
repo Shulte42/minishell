@@ -98,6 +98,6 @@ bool ft_quote_checker(char *input)
 		printf("Fail to allocat memory (falta terminar!!!)\n");//todo; funcao propria pra lidar com errors
 		return (false);
 	}
-	printf("%s\n", input);
+	// printf("%s\n", input);
 	return (true);
 }

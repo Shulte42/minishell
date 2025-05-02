@@ -71,7 +71,7 @@ void	exec_external_cmd(char **cmd)
 	command_path = get_command_path(cmd[0], env_var);
 	if (!command_path)
 	{
-		printf("-minishell: %s: command not found\n", cmd[0]);
+		printf("minishell: %s: command not found\n", cmd[0]);
 		free_array(env_var);
 		exit(127);
 	}

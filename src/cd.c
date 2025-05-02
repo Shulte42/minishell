@@ -54,10 +54,12 @@ void	change_dir(char *dir, int flag_free, t_shell *data)
 		if (stat(dir, &buf) == 0)
 		{
 			if ((buf.st_mode & __S_IFREG))
-				printf("Not a directory\n");
+				perror(dir);
 		}
 		else
-			printf("No such file or directory\n"); 
+			perror(dir);
+		data->return_status = 1;
+		set_questionvar(data);
 	}
 	else
 		update_pwd(data, dir);
@@ -72,6 +74,12 @@ void    cd(t_shell *data, char **args)
 
 	dir = NULL;
 	flag_free = 0;
+	if (args[2])
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+		data->return_status = 1;
+		set_questionvar(data);
+	}
 	if (!args[1] || ft_strcmp(args[1], "--") == 0)
 	{
 		dir = get_value(data, "HOME");

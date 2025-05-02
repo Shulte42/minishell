@@ -96,8 +96,8 @@ void    ft_parsing_loop(t_shell *data)
 		ft_set_token_type(data->tokens);
 		if (check_tokens(data))
 			data->commands = create_cmd_list(data->tokens);
-		print_cmd_lst(data->commands);
-		print_token_lst(data->tokens);
+		// print_cmd_lst(data->commands);
+		// print_token_lst(data->tokens);
 	}
 }
 
